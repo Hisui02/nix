@@ -6,11 +6,11 @@
   ];
 
   disabledModules = [
-    #./modules/xserver.nix
+
   ];
   services.openssh.enable = true;
 
-  fileSystems."/home/hisui/nixBK" = {
+  fileSystems."/home/hisui/nix" = {
     fsType = "vboxsf";
     device = "nix";
     options = [ "rw" "nofail" ];
@@ -23,7 +23,7 @@
   time.timeZone = "Europe/Madrid"; # Set your time zone.
 
   i18n.defaultLocale = "es_ES.UTF-8"; # Select internationalisation properties.
-  # console.useXkbConfig = true; # use xkb.options in tty.
+  
   console.keyMap = "es";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enabling flakes
