@@ -6,8 +6,8 @@
 
     users.hisui = {
       isNormalUser = true;
-      description = "Ampersand";
-      extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
+      description = "Alvaro LG";
+      extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" "vboxsf" ];
       packages = with pkgs; [];
     };
   };

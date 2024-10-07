@@ -3,7 +3,7 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/vdb";
+        device = "/dev/sda";
         type = "disk";
         content = {
           type = "gpt";
@@ -11,6 +11,13 @@
             boot = {
               size = "1M";
               type = "EF02"; # for grub MBR
+            };
+            swap = {
+              size = "8G";
+              content = {
+                type = "swap";
+                resumeDevice = true;
+              };
             };
             root = {
               size = "100%";
