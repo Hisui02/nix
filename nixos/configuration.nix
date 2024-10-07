@@ -6,7 +6,7 @@
   ];
 
   disabledModules = [
-    ./modules/xserver.nix
+    #./modules/xserver.nix
   ];
   services.openssh.enable = true;
 
@@ -23,6 +23,8 @@
   time.timeZone = "Europe/Madrid"; # Set your time zone.
 
   i18n.defaultLocale = "es_ES.UTF-8"; # Select internationalisation properties.
+  # console.useXkbConfig = true; # use xkb.options in tty.
+  console.keyMap = "es";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enabling flakes
 
