@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     # Desktop apps
     kitty
+    greetd.tuigreet
     # kdePackages.qt6ct
     # kdePackages.qt5compat
     # nwg-look

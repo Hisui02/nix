@@ -8,7 +8,7 @@
   disabledModules = [
 
   ];
-  
+
   services.openssh.enable = true;
 
   # services.xserver.videoDrivers = lib.mkOverride 40 [ "virtualbox" "vmware" "cirrus" "vesa" "modesetting"];
@@ -18,8 +18,6 @@
     device = "nix";
     options = [ "rw" "nofail" ];
   };
-
-  # nixpkgs.overlays = [ inputs.polymc.overlay ];
 
   networking.hostName = "nixos"; # Define your hostname.
 
