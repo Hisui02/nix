@@ -1,4 +1,3 @@
-# Display Managers
 {
   services.displayManager = {
     sddm.enable = true;

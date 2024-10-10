@@ -6,7 +6,7 @@
 {
   imports = [ ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [ "ata_piix" "ohci_pci" "ehci_pci" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
@@ -14,6 +14,16 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/89809166-3ea9-4919-b15a-897da9614364";
       fsType = "ext4";
+    };
+
+  fileSystems."/home/hisui/nix" =
+    { device = "nix";
+      fsType = "vboxsf";
+    };
+
+  fileSystems."/media/sf_nix" =
+    { device = "nix";
+      fsType = "vboxsf";
     };
 
   swapDevices =

@@ -6,7 +6,7 @@
     settings = {
       "$mainMod" = "SUPER";
 
-      monitor = ",1920x1080@90,auto,1";
+      monitor = ",preferred,auto,1";
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -23,9 +23,9 @@
       };
 
       input = {
-        kb_layout = "es,us";
-        kb_variant = "lang";
-        kb_options = "grp:caps_toggle";
+        kb_layout = "es";
+        # kb_variant = "lang";
+        # kb_options = "grp:caps_toggle";
 
         follow_mouse = 1;
 
@@ -106,22 +106,22 @@
       };
 
       windowrule = [
-        "float, ^(imv)$"
-        "float, ^(mpv)$"
+        # "float, ^(imv)$"
+        # "float, ^(mpv)$"
       ];
 
       exec-once = [
-        "swww init"
-        "swww img ~/Downloads/nixos-chan.png"
-        "waybar"
-        "wl-paste --type text --watch cliphist store"
-        "wl-paste --type image --watch cliphist store"
+        # "swww init"
+        # "swww img ~/Downloads/nixos-chan.png"
+        # "waybar"
+        # "wl-paste --type text --watch cliphist store"
+        # "wl-paste --type image --watch cliphist store"
       ];
 
       bind = [
         "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
-        "$mainMod, Return, exec, alacritty"
+        "$mainMod, T, exec, kitty"
         "$mainMod, Q, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, dolphin"
