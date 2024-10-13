@@ -2,11 +2,11 @@
   imports = [
     # ./bluetooth.nix
     ./bootloader.nix
-    # ./display-manager.nix
+    ./display-manager.nix
     ./environment.nix
     ./hyprland.nix
     ./network-manager.nix
-    # ./sound.nix
+    ./sound.nix
     ./user.nix
   ];
 }

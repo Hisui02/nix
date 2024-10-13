@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [
     # Desktop apps
     kitty
-    greetd.tuigreet
+    # greetd.tuigreet
     # kdePackages.qt6ct
     # kdePackages.qt5compat
     # nwg-look
@@ -40,8 +40,8 @@
     # file
     # tree
     # wget
-    # git
-    # fastfetch
+     git
+     fastfetch
     # htop
     # nix-index
     # unzip

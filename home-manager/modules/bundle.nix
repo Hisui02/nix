@@ -1,6 +1,6 @@
 {
   imports = [
-    # ./hyprland/index.nix
+    ./hyprland/index.nix
     ./cursor.nix
     ./git.nix
   ];
