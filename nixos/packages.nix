@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     # Desktop apps
     kitty
+    dolphin
     # greetd.tuigreet
     # kdePackages.qt6ct
     # kdePackages.qt5compat
@@ -17,7 +18,7 @@
     # telegram-desktop
     # alacritty
     # obs-studio
-    # rofi
+     rofi
     # wofi
     # mpv
     # kdenlive
@@ -38,13 +39,13 @@
     # CLI utils
     # neofetch
     # file
-    # tree
+     tree
     # wget
      git
      fastfetch
-    # htop
+     htop
     # nix-index
-    # unzip
+     unzip
     # scrot
     # ffmpeg
     # light
@@ -85,8 +86,7 @@
     # herbstluftwm
     # hyprland
     # seatd
-    # polkit # MIO
-    # xdg-desktop-portal-hyprland
+     xdg-desktop-portal-hyprland
     # polybar
     # waybar
 
