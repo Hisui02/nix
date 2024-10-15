@@ -11,14 +11,6 @@
 
   services.openssh.enable = true;
 
-  # services.xserver.videoDrivers = lib.mkOverride 40 [ "virtualbox" "vmware" "cirrus" "vesa" "modesetting"];
-
-  # fileSystems."/home/hisui/nix" = {
-  #   fsType = "vboxsf";
-  #   device = "nix";
-  #   options = [ "rw" "nofail" ];
-  # };
-
   networking.hostName = "nixos"; # Define your hostname.
 
   time.timeZone = "Europe/Madrid"; # Set your time zone.

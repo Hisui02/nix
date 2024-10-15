@@ -4,342 +4,514 @@
     settings = {
       mainBar = {
         layer = "top";
-        position = "top";
-        margin = "9 13 -10 18";
+        position = "bottom";
+        mod = "dock";
+        height = 28;
+        exclusive = true;
+        passthrough = false;
+        gtk-layer-shell = true;
+        reload_style_on_change = true;
+
+        modules-left = ["custom/padd","custom/l_end","cpu","memory","custom/cpuinfo","custom/gpuinfo","custom/r_end","custom/l_end","idle_inhibitor","clock","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"];
+	    modules-center = ["custom/padd","custom/l_end","hyprland/window","custom/r_end","custom/padd"];
+	    modules-right = ["custom/padd","custom/l_end","backlight","network","pulseaudio","pulseaudio#microphone","custom/updates","custom/keybindhint","custom/r_end","custom/l_end","privacy","tray","battery","custom/r_end","custom/l_end","custom/wallchange","custom/theme","custom/wbar","custom/cliphist","custom/power","custom/r_end","custom/padd"];
 
         modules-left = ["hyprland/workspaces" "hyprland/language" "keyboard-state" "hyprland/submap"];
         modules-center = ["clock" "custom/weather"];
         modules-right = ["pulseaudio" "custom/mem" "cpu" "backlight" "battery" "tray"];
 
-        "hyprland/workspaces" = {
-          disable-scroll = true;
+   "cpu" = {
+    interval = 10;
+    format = "󰍛 {usage}%";
+    rotate = 0;
+    format-alt = "{icon0}{icon1}{icon2}{icon3}";
+    format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+};
+
+"memory" = {
+    states = {
+        c = 90;
+        h = 60; 
+        m = 30;  
+    };
+    interval = 30;
+    format = "󰾆 {used}GB";
+    rotate = 0;
+    format-m = "󰾅 {used}GB";
+    format-h = "󰓅 {used}GB";
+    format-c = " {used}GB";
+    format-alt = "󰾆 {percentage}%";
+    max-length = 10;
+    tooltip = true;
+    tooltip-format = "󰾆 {percentage}%\n {used:0.1f}GB/{total:0.1f}GB";
+};
+
+"custom/cpuinfo" = {
+    exec = "cpuinfo.sh";
+    return-type = "json";
+    format = "{}";
+    rotate = 0;
+    interval = 5; 
+    tooltip = true;
+    max-length = 1000;
+};
+
+"custom/gpuinfo" = {
+    exec = "gpuinfo.sh";
+    return-type = "json";
+    format = "{}";
+    rotate = 0;
+    interval = 5; 
+    tooltip = true;
+    max-length = 1000;
+    on-click = "gpuinfo.sh --toggle";
+};
+
+"custom/gpuinfo#nvidia" = {
+    exec = "gpuinfo.sh --use nvidia";
+    return-type = "json";
+    format = "{}";
+    rotate = 0;
+    interval = 5;
+    tooltip = true;
+    max-length = 1000;
+};
+
+"custom/gpuinfo#amd" = {
+    exec = "gpuinfo.sh --use amd";
+    return-type = "json";
+    format = "{}";
+    rotate = 0;
+    interval = 5;
+    tooltip = true;
+    max-length = 1000;
+};
+
+"custom/gpuinfo#intel" = {
+    exec = "gpuinfo.sh --use intel";
+    return-type = "json";
+    format = "{}";
+    rotate = 0;
+    interval = 5;
+    tooltip = true;
+    max-length = 1000;
+};
+
+"idle_inhibitor" = {
+    format = "{icon}";
+    rotate = 0;
+    format-icons = {
+        activated = "󰥔";
+        deactivated = "";
+    };
+};
+
+"clock" = {
+    format = "{:%R 󰃭 %d·%m·%y}";
+    rotate = 0;
+    format-alt = "{:%R 󰃭 %d·%m·%y}";
+    tooltip-format = "<span>{calendar}</span>";
+    calendar = {
+        mode = "month";
+        mode-mon-col = 3;
+        on-scroll = 1;
+        on-click-right = "mode";
+        format = {
+            months = "<span color='#ffead3'><b>{}</b></span>";
+            weekdays = "<span color='#ffcc66'><b>{}</b></span>";
+            today = "<span color='#ff6699'><b>{}</b></span>";
         };
-
-    "hyprland/language" = {
-        format-en = "US";
-        format-ru = "RU";
-	      min-length = 5;
-	      tooltip = false;
     };
-
-    "keyboard-state" = {
-        #numlock = true;
-        capslock = true;
-        format = "{icon} ";
-        format-icons = {
-            locked = " ";
-            unlocked = "";
-        };
+    actions = {
+        on-click-right = "mode";
+        on-click-forward = "tz_up";
+        on-click-backward = "tz_down";
+        on-scroll-up = "shift_up";
+        on-scroll-down = "shift_down";
     };
+};
 
-    "clock" = {
-        # timezone = "America/New_York";
-        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-        format = "{:%a; %d %b, %I:%M %p}";
-    };
+"hyprland/workspaces" = {
+    disable-scroll = true;
+    rotate = 0;
+    all-outputs = true;
+    active-only = false;
+    on-click = "activate";
+    on-scroll-up = "hyprctl dispatch workspace -1";
+    on-scroll-down = "hyprctl dispatch workspace +1";
+    persistent-workspaces = {};
+};
 
-    "custom/weather" = {
-        format = "{}";
-        tooltip = true;
-        interval = 1800;
-        exec = "$HOME/.config/waybar/scripts/wttr.py";
-        return-type = "json";
+"hyprland/window" = {
+    format = "  {}";
+    rotate = 0;
+    separate-outputs = true;
+    rewrite = {
+        "hisui@archlinux:(.*)" = "$1 ";
+        "(.*) — Mozilla Firefox" = "$1 󰈹";
+        "(.*)Mozilla Firefox" = "Firefox 󰈹";
+        "(.*) - Visual Studio Code" = "$1 󰨞";
+        "(.*)Visual Studio Code" = "Code 󰨞";
+        "(.*) — Dolphin" = "$1 󰉋";
+        "(.*)Spotify" = "Spotify 󰓇";
+        "(.*)Steam" = "Steam 󰓓";
     };
+    max-length = 1000;
+};
 
-    "pulseaudio" = {
-        # scroll-step = 1; # %, can be a float
-        reverse-scrolling = 1;
-        format = "{volume}% {icon} {format_source}";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
-        format-muted = " {format_source}";
-        format-source = "{volume}% ";
-        format-source-muted = "";
-        format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
-        };
-        on-click = "pavucontrol";
-        min-length = 13;
-    };
+"backlight" = {
+    device = "intel_backlight";
+    rotate = 0;
+    format = "{icon} {percent}%";
+    format-icons = ["" "" "" "" "" "" "" "" ""];
+    on-scroll-up = "brightnessctl set 1%+";
+    on-scroll-down = "brightnessctl set 1%-";
+    min-length = 6;
+};
 
-    "custom/mem" = {
-        format = "{} ";
-        interval = 3;
-        exec = "free -h | awk '/Mem:/{printf $3}'";
-        tooltip = false;
-    };
+"network" = {
+    tooltip = true;
+    format-wifi = " ";
+    rotate = 0;
+    format-ethernet = "󰈀 ";
+    tooltip-format = "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>";
+    format-linked = "󰈀 {ifname} (No IP)";
+    format-disconnected = "󰖪 ";
+    tooltip-format-disconnected = "Disconnected";
+    format-alt = "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>";
+    interval = 2;
+};
 
-    "cpu" = {
-      interval = 2;
-      format = "{usage}% ";
-      min-length = 6;
+"pulseaudio" = {
+    format = "{icon} {volume}";
+    rotate = 0;
+    format-muted = "婢";
+    on-click = "pavucontrol -t 3";
+    on-click-right = "volumecontrol.sh -s ''";
+    on-click-middle = "volumecontrol.sh -o m";
+    on-scroll-up = "volumecontrol.sh -o i";
+    on-scroll-down = "volumecontrol.sh -o d";
+    tooltip-format = "{icon} {desc} // {volume}%";
+    scroll-step = 5;
+    format-icons = {
+        headphone = "";
+        hands-free = "";
+        headset = "";
+        phone = "";
+        portable = "";
+        car = "";
+        default = ["" "" ""];
     };
+};
 
-    "temperature" = {
-        # thermal-zone = 2;
-        # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
-        critical-threshold = 80;
-        # format-critical = "{temperatureC}°C {icon}";
-        format = "{temperatureC}°C {icon}";
-        format-icons = ["" "" "" "" ""];
-        tooltip = false;
-    };
+"pulseaudio#microphone" = {
+    format = "{format_source}";
+    rotate = 0;
+    format-source = "";
+    format-source-muted = "";
+    on-click = "pavucontrol -t 4";
+    on-click-middle = "volumecontrol.sh -i m";
+    on-scroll-up = "volumecontrol.sh -i i";
+    on-scroll-down = "volumecontrol.sh -i d";
+    tooltip-format = "{format_source} {source_desc} // {source_volume}%";
+    scroll-step = 5;
+};
 
-    "backlight" = {
-        device = "intel_backlight";
-        format = "{percent}% {icon}";
-        format-icons = [""];
-        min-length = 7;
-    };
+"custom/updates" = {
+    exec = "systemupdate.sh";
+    return-type = "json";
+    format = "{}";
+    rotate = 0;
+    on-click = "hyprctl dispatch exec 'systemupdate.sh up'";
+    interval = 86400;
+    tooltip = true;
+    signal = 20;
+};
 
-    battery = {
-        states = {
-            warning = 30;
-            critical = 15;
-        };
-        format = "{capacity}% {icon}";
-        format-charging = "{capacity}% ";
-        format-plugged = "{capacity}% ";
-        format-alt = "{time} {icon}";
-        format-icons = ["" "" "" "" "" "" "" "" "" ""];
-	on-update = "$HOME/.config/waybar/scripts/check_battery.sh";
-    };
+"custom/keybindhint" = {
+    format = " ";
+    rotate = 0;
+    on-click = "keybinds_hint.sh";
+};
 
-    tray = {
-        icon-size = 16;
-        spacing = 0;
+"privacy" = {
+    icon-size = 12;
+    icon-spacing = 5;
+    transition-duration = 250;
+    modules = [
+        {
+            type = "screenshare";
+            tooltip = true;
+            tooltip-icon-size = 24;
+        },
+        {
+            type = "audio-in";
+            tooltip = true;
+            tooltip-icon-size = 24;
+        },
+    ];
+};
+
+"tray" = {
+    icon-size = 16;
+    rotate = 0;
+    spacing = 5;
+};
+
+battery = {
+    states = {
+        good = 95;
+        warning = 30;
+        critical = 20;
     };
+    format = "{icon} {capacity}%";
+    format-charging = " {capacity}%";
+    format-plugged = " {capacity}%";
+    format-alt = "{time} {icon}";
+    format-icons = ["󰂎" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
+};
+
+wallchange = {
+    format = "{}";
+    exec = "echo ; echo 󰆊 switch wallpaper";
+    on-click = "swwwallpaper.sh -n";
+    on-click-right = "swwwallpaper.sh -p";
+    on-click-middle = "sleep 0.1 && swwwallselect.sh";
+    interval = 86400; # once every day
+    tooltip = true;
+};
+
+theme = {
+    format = "{}";
+    exec = "echo ; echo 󰟡 switch theme";
+    on-click = "themeswitch.sh -n";
+    on-click-right = "themeswitch.sh -p";
+    on-click-middle = "sleep 0.1 && themeselect.sh";
+    interval = 86400; # once every day
+    tooltip = true;
+};
+
+wbar = {
+    format = "{}"; #    //
+    exec = "echo ; echo  switch bar //  dock";
+    on-click = "wbarconfgen.sh n";
+    on-click-right = "wbarconfgen.sh p";
+    on-click-middle = "sleep 0.1 && quickapps.sh kitty firefox spotify code dolphin";
+    interval = 86400;
+    tooltip = true;
+};
+
+cliphist = {
+    format = "{}";
+    exec = "echo ; echo 󰅇 clipboard history";
+    on-click = "sleep 0.1 && cliphist.sh c";
+    on-click-right = "sleep 0.1 && cliphist.sh d";
+    on-click-middle = "sleep 0.1 && cliphist.sh w";
+    interval = 86400; # once every day
+    tooltip = true;
+};
+
+power = {
+    format = "{}";
+    exec = "echo ; echo  logout";
+    on-click = "logoutlaunch.sh 2";
+    on-click-right = "logoutlaunch.sh 1";
+    interval = 86400; # once every day
+    tooltip = true;
+};
 
       };
     };
   
     style = 
       ''
-* {
+    * {
     border: none;
-    border-radius: 0;
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: JetBrains Mono;
-    font-weight: bold; 
-    min-height: 20px;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    font-size: 10px;
+    min-height: 10px;
 }
+
+@define-color bar-bg rgba(0, 0, 0, 0);
+
+@define-color main-bg #11111b;
+@define-color main-fg #cdd6f4;
+
+@define-color wb-act-bg #a6adc8;
+@define-color wb-act-fg #313244;
+
+@define-color wb-hvr-bg #f5c2e7;
+@define-color wb-hvr-fg #313244;
 
 window#waybar {
-    background: transparent;
+    background: @bar-bg;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
-
-#workspaces {
-    margin-right: 8px;
-    border-radius: 10px;
-    transition: none;
-    background: #383c4a;
+tooltip {
+    background: @main-bg;
+    color: @main-fg;
+    border-radius: 7px;
+    border-width: 0px;
 }
 
 #workspaces button {
-    transition: none;
-    color: #7c818c;
-    background: transparent;
-    padding: 5px;
-    font-size: 18px;
-}
-
-#workspaces button.persistent {
-    color: #7c818c;
-    font-size: 12px;
-}
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-    transition: none;
-    box-shadow: inherit;
-    text-shadow: inherit;
-    border-radius: inherit;
-    color: #383c4a;
-    background: #7c818c;
+    box-shadow: none;
+	text-shadow: none;
+    padding: 0px;
+    border-radius: 8px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-right: 0px;
+    color: @main-fg;
+    animation: ws_normal 20s ease-in-out 1;
 }
 
 #workspaces button.active {
-    background: #4e5263;
-    color: white;
-    border-radius: inherit;
+    background: @wb-act-bg;
+    color: @wb-act-fg;
+    margin-left: 2px;
+    padding-left: 11px;
+    padding-right: 11px;
+    margin-right: 2px;
+    animation: ws_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#language {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+#workspaces button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-hvr-fg;
+    animation: ws_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
 
-#keyboard-state {
+#taskbar button {
+    box-shadow: none;
+	text-shadow: none;
+    padding: 0px;
+    border-radius: 8px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-right: 0px;
+    color: @wb-color;
+    animation: tb_normal 20s ease-in-out 1;
+}
+
+#taskbar button.active {
+    background: @wb-act-bg;
+    color: @wb-act-color;
+    margin-left: 2px;
+    padding-left: 11px;
+    padding-right: 11px;
+    margin-right: 2px;
+    animation: tb_active 20s ease-in-out 1;
+    transition: all 0.4s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#taskbar button:hover {
+    background: @wb-hvr-bg;
+    color: @wb-hvr-color;
+    animation: tb_hover 20s ease-in-out 1;
+    transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+}
+
+#tray menu * {
+    min-height: 16px
+}
+
+#tray menu separator {
+    min-height: 10px
+}
+
+#backlight,
+#battery,
+#bluetooth,
+#custom-cliphist,
+#clock,
+#custom-cpuinfo,
+#cpu,
+#custom-gpuinfo,
+#idle_inhibitor,
+#custom-keybindhint,
+#language,
+#memory,
+#mpris,
+#network,
+#custom-notifications,
+#custom-power,
+#privacy,
+#pulseaudio,
+#custom-spotify,
+#taskbar,
+#custom-theme,
+#tray,
+#custom-updates,
+#custom-wallchange,
+#custom-wbar,
+#window,
+#workspaces,
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end,
+#custom-rr_end {
+    color: @main-fg;
+    background: @main-bg;
+    opacity: 1;
+    margin: 3px 0px 3px 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#workspaces,
+#taskbar {
+    padding: 0px;
+}
+
+#custom-r_end {
+    border-radius: 0px 19px 19px 0px;
     margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    padding-right: 0px;
 }
 
-#custom-pacman {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+#custom-l_end {
+    border-radius: 19px 0px 0px 19px;
+    margin-left: 8px;
+    padding-left: 0px;
 }
 
-#custom-mail {
+#custom-sr_end {
+    border-radius: 0px;
     margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    padding-right: 0px;
 }
 
-#submap {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+#custom-sl_end {
+    border-radius: 0px;
+    margin-left: 8px;
+    padding-left: 0px;
 }
 
-#clock {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#custom-weather {
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#pulseaudio {
+#custom-rr_end {
+    border-radius: 0px 7px 7px 0px;
     margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
+    padding-right: 0px;
 }
 
-#pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+#custom-rl_end {
+    border-radius: 7px 0px 0px 7px;
+    margin-left: 8px;
+    padding-left: 0px;
 }
 
-#custom-mem {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#cpu {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#temperature {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
-#backlight {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#battery {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-#battery.warning:not(.charging) {
-    background-color: #ffbe61;
-    color: black;
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#tray {
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
       '';
   };
 }
