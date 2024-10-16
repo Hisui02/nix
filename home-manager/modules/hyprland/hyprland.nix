@@ -6,8 +6,10 @@
     settings = {
       "$mainMod" = "SUPER";
 
-      monitor = ",preferred,auto,1.2";
-      monitor = "HDMI-A-1,highres@highrr,auto-up,1.2";
+      monitor = [
+        ",preferred,auto,1.2"
+        "HDMI-A-1,highres@highrr,auto-up,1.2"
+      ];
 
       env = [
         "XDG_CURRENT_DESKTOP,Hyprland"
@@ -28,7 +30,7 @@
       #   sensitivity = -0.5;
       # }
 
-      xwayland {
+      xwayland = {
         force_zero_scaling = true;
       };
 
