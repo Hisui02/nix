@@ -4,6 +4,7 @@
     xwayland.enable = true;
 
     settings = {
+      "$scrPath" = "$HOME/.local/share/bin";
       "$mainMod" = "SUPER";
 
       monitor = [
@@ -136,7 +137,7 @@
         # Application shortcuts
         "$mainMod, T, exec, kitty"
         "$mainMod, E, exec, dolphin"
-        "$mainMod, C, exec, code"
+        "$mainMod, C, exec, codium"
         "$mainMod, F, exec, brave"
         "Ctrl+Shift, Escape, exec, $scrPath/sysmonlaunch.sh" # launch system monitor (htop/btop or fallback to top)
 
@@ -195,9 +196,9 @@
 
         # Move/Resize focused window
         "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
+        "$mainMod, mouse:273, resizeactive"
         "$mainMod, Z, movewindow"
-        "$mainMod, X, resizewindow"
+        "$mainMod, X, resizeactive"
 
         # Move/Switch to special workspace (scratchpad)
         "$mainMod+Alt, period, movetoworkspacesilent, special"

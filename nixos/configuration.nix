@@ -19,6 +19,9 @@
 
   console.keyMap = "es";
 
+  services.libinput.enable = true; # Touchpad gestures
+  services.libinput.touchpad.naturalScrolling = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enabling flakes
 
   system.stateVersion = "24.05"; # Don't change it bro

@@ -8,6 +8,9 @@
     # Desktop apps
     kitty
     dolphin
+    vscodium
+    wlogout
+    jq
     # greetd.tuigreet
     # kdePackages.qt6ct
     # kdePackages.qt5compat

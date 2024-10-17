@@ -8,5 +8,6 @@
     ./network-manager.nix
     ./sound.nix
     ./user.nix
+    ./nvidia.nix
   ];
 }

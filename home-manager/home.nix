@@ -8,5 +8,12 @@
     username = "hisui";
     homeDirectory = "/home/hisui";
     stateVersion = "24.05";
+
+    file = {
+      ".local/share/bin" = {
+        source = ./scripts;
+        recursive = true;
+      };
+    };
   };
 }

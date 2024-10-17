@@ -12,13 +12,9 @@
         gtk-layer-shell = true;
         reload_style_on_change = true;
 
-        modules-left = ["custom/padd","custom/l_end","cpu","memory","custom/cpuinfo","custom/gpuinfo","custom/r_end","custom/l_end","idle_inhibitor","clock","custom/r_end","custom/l_end","hyprland/workspaces","custom/r_end","custom/padd"];
-	    modules-center = ["custom/padd","custom/l_end","hyprland/window","custom/r_end","custom/padd"];
-	    modules-right = ["custom/padd","custom/l_end","backlight","network","pulseaudio","pulseaudio#microphone","custom/updates","custom/keybindhint","custom/r_end","custom/l_end","privacy","tray","battery","custom/r_end","custom/l_end","custom/wallchange","custom/theme","custom/wbar","custom/cliphist","custom/power","custom/r_end","custom/padd"];
-
-        modules-left = ["hyprland/workspaces" "hyprland/language" "keyboard-state" "hyprland/submap"];
-        modules-center = ["clock" "custom/weather"];
-        modules-right = ["pulseaudio" "custom/mem" "cpu" "backlight" "battery" "tray"];
+        modules-left = ["custom/padd" "custom/l_end" "cpu" "memory" "custom/cpuinfo" "custom/gpuinfo" "custom/r_end" "custom/l_end" "idle_inhibitor" "clock" "custom/r_end" "custom/l_end" "hyprland/workspaces" "custom/r_end" "custom/padd"];
+	    modules-center = ["custom/padd" "custom/l_end" "hyprland/window" "custom/r_end" "custom/padd"];
+	    modules-right = ["custom/padd" "custom/l_end" "backlight" "network" "pulseaudio" "pulseaudio#microphone" "custom/updates" "custom/keybindhint" "custom/r_end" "custom/l_end" "privacy" "tray" "battery" "custom/r_end" "custom/l_end" "custom/wallchange" "custom/theme" "custom/wbar" "custom/cliphist" "custom/power" "custom/r_end" "custom/padd"];
 
    "cpu" = {
     interval = 10;
@@ -243,12 +239,12 @@
             type = "screenshare";
             tooltip = true;
             tooltip-icon-size = 24;
-        },
+        }
         {
             type = "audio-in";
             tooltip = true;
             tooltip-icon-size = 24;
-        },
+        }
     ];
 };
 
