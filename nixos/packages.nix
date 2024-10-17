@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   nixpkgs.config = {
-    # allowUnfree = true;
+    allowUnfree = true;
     # permittedInsecurePackages = ["python-2.7.18.8" "electron-25.9.0"];
   };
 
@@ -11,11 +11,13 @@
     vscodium
     wlogout
     jq
+    brave
     # greetd.tuigreet
-    # kdePackages.qt6ct
-    # kdePackages.qt5compat
+    kdePackages.qt6ct
+    kdePackages.qt5compat
     # nwg-look
-    # xdg-desktop-portal-hyprland
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal
     # audacity
     # chromium
     # telegram-desktop
@@ -25,9 +27,9 @@
     # wofi
     # mpv
     # kdenlive
-    # discord
+    discord
     # gparted
-    # obsidian
+    obsidian
     # zoom-us
     # pcmanfm-qt
     # polymc
@@ -46,7 +48,8 @@
     # wget
      git
      fastfetch
-     htop
+    # htop
+    btop
     # nix-index
      unzip
     # scrot
@@ -89,13 +92,14 @@
     # herbstluftwm
     # hyprland
     # seatd
-     xdg-desktop-portal-hyprland
+    # xdg-desktop-portal-hyprland
     # polybar
     # waybar
 
     # Sound
-    # pipewire
-    # pulseaudio
+     pipewire
+     pulseaudio
+     pavucontrol
     # pamixer
 
     # GPU stuff 
@@ -119,13 +123,13 @@
   ];
 
   fonts.packages = with pkgs; [
-    # jetbrains-mono
+    jetbrains-mono
     # noto-fonts
     # noto-fonts-emoji
     # twemoji-color-font
     # font-awesome
     # powerline-fonts
     # powerline-symbols
-    # (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
   ];
 }

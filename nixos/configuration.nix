@@ -19,8 +19,15 @@
 
   console.keyMap = "es";
 
-  services.libinput.enable = true; # Touchpad gestures
-  services.libinput.touchpad.naturalScrolling = true;
+  services.libinput={
+    enable = true; # Touchpad gestures
+    touchpad.naturalScrolling = true;
+    touchpad.additionalOptions = ''
+      Option "TappingButtonAction" "2"  # disable tap-to-paste
+    '';
+  };
+
+  boot.kernelParams = ["nvidia-dkms"];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enabling flakes
 

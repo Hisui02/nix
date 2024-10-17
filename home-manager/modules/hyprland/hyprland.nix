@@ -19,6 +19,10 @@
         "XCURSOR_SIZE,36"
         "QT_QPA_PLATFORM,wayland"
         "XDG_SCREENSHOTS_DIR,~/screens"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "GBM_BACKEND,nvidia-drm"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "WLR_NO_HARDWARE_CURSORS,1"
       ];
 
       debug = {
@@ -101,7 +105,7 @@
         "opacity 0.80 0.80,class:^(org.kde.dolphin)$"
         "opacity 0.80 0.70,class:^(org.pulseaudio.pavucontrol)$"
         "opacity 0.70 0.70,class:^(Spotify)$"
-        "opacity 0.80 0.80,class:^(discord)$"
+        "opacity 0 Option .80 0.80,class:^(discord)$"
         "float,class:^(org.kde.dolphin)$,title:^(Progress Dialog — Dolphin)$"
         "float,class:^(org.kde.dolphin)$,title:^(Copying — Dolphin)$"
         "float,class:^(kitty)$,title:^(top)$"
@@ -116,9 +120,10 @@
       exec-once = [
         # "swww init"
         # "swww img ~/Downloads/nixos-chan.png"
-        # "waybar"
+        "waybar"
         # "wl-paste --type text --watch cliphist store"
         # "wl-paste --type image --watch cliphist store"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
       bind = [
@@ -132,13 +137,15 @@
         "$mainMod, L, exec, swaylock" # launch lock screen
         "$mainMod+Shift, F, exec, $scrPath/windowpin.sh" # toggle pin on focused window
         "$mainMod, Backspace, exec, $scrPath/logoutlaunch.sh" # launch logout menu
-        "Ctrl+Alt, W, exec, killall waybar || waybar" # toggle waybar
+        "Ctrl+Alt, W, exec, pkill waybar || waybar" # toggle waybar
 
         # Application shortcuts
         "$mainMod, T, exec, kitty"
         "$mainMod, E, exec, dolphin"
         "$mainMod, C, exec, codium"
-        "$mainMod, F, exec, brave"
+        "$mainMod, B, exec, brave"
+        "$mainMod, O, exec, obsidian"
+        "$mainMod, S, exec, kitty btop"
         "Ctrl+Shift, Escape, exec, $scrPath/sysmonlaunch.sh" # launch system monitor (htop/btop or fallback to top)
 
         # Rofi menus
