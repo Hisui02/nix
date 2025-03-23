@@ -1,8 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    # ./example.nix - add your modules here
+    ./hyprland
+    ./waybar
+    ./chromium
+    ./shell
+    ./fastfetch
+    ./code
+    ./wallpapers
   ];
 
   # home-manager options go here
@@ -10,17 +16,31 @@
     # pkgs.vscode - hydenix's vscode version
     # pkgs.userPkgs.vscode - your personal nixpkgs version
   ];
-
   # hydenix home-manager options go here
   hydenix.hm = {
     #! Important options
     enable = true;
 
     git = {
-        enable = true; # enable git module
-        name = "hisui"; # git user name eg "John Doe"
-        email = "alvarolgleiva@gmail.com"; # git user email eg "john.doe@example.com"
+      name = "hisui";
+      email = "alvarolgleiva@gmail.com";
     };
+
+    shell.pokego.enable = false; # enable Pokemon ASCII art scripts
+    fastfetch.enable = false; # fastfetch configuration
+
+    firefox.enable = false;
+
+    editors = {
+      vscode.enable = false;
+      # default = "codium"; # default text editor
+    };
+
+    #TODO: Disable discord
+    # social = {
+    #   discord.enable = false; # enable discord module
+    #   webcord.enable = false; # enable webcord module
+    # };
 
     /*
       ! Below are defaults
