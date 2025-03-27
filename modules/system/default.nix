@@ -23,6 +23,9 @@
     bat
     btop
 
+    # Work
+    teamviewer
+
     # Others
     iio-hyprland # Both for automatically rotate the screen
   ];

@@ -18,6 +18,8 @@
 
       rb="sudo nixos-rebuild switch --flake ~/hydenix/#hydenix";
       cl="sudo nix-collect-garbage -d && rb"; # This alias calls rebuild once
+
+      c="codium";
     };
   };
 }

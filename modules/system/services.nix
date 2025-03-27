@@ -8,5 +8,8 @@
         InhibitDelayMaxSec=60
       '';
     };
+
+    teamviewer.enable = true;
+
   };
 }

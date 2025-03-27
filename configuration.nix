@@ -65,7 +65,7 @@ in
       inherit inputs;
     };
 
-    backupFileExtension = "backup";
+    backupFileExtension = "hm-backup";
 
     #! EDIT THIS USER (must match users defined below)
     users."hisui" =

@@ -33,14 +33,21 @@
 
     editors = {
       vscode.enable = false;
-      # default = "codium"; # default text editor
+      default = "codium"; # default text editor
     };
 
     #TODO: Disable discord
-    # social = {
-    #   discord.enable = false; # enable discord module
-    #   webcord.enable = false; # enable webcord module
-    # };
+    social = {
+      discord.enable = false; # enable discord module
+      webcord.enable = false; # enable webcord module
+    };
+
+    theme = {
+        active = "Catppuccin Mocha"; # active theme name
+        themes = [
+          "Catppuccin Mocha"
+        ]; # default enabled themes, full list in https://github.com/richen604/hydenix/tree/main/hydenix/sources/themes
+      };
 
     /*
       ! Below are defaults
