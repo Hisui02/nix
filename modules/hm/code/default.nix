@@ -13,7 +13,7 @@
       "security.workspace.trust.startupPrompt" = "never";
       "security.workspace.trust.enabled" = false;
       "editor.minimap.side" = "left";
-      "editor.fontFamily" = "'Maple Mono', 'monospace', monospace";
+      "editor.fontFamily" = "'CaskaydiaCove Nerd Font Mono', 'Maple Mono', 'monospace', monospace";
       "extensions.autoUpdate" = false;
       "workbench.statusBar.visible" = false;
       "terminal.external.linuxExec" = "kitty";
@@ -24,6 +24,9 @@
       "workbench.activityBar.location" = "top";
       "workbench.layoutControl.enabled" = false;
       "window.commandCenter" = false;
+      "window.customTitleBarVisibility" = "never";
+      "window.titleBarStyle" = "native";
+      "workbench.editor.showTabs" = "none";
     };
   };
 }

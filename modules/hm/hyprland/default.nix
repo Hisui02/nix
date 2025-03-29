@@ -6,11 +6,10 @@
       force = true;
       mutable = true;
     };
-    # TODO: Fix path
-    # ".local/share/bin/custom-monitor.sh" = {
-    #   source = ./scripts/custom-monitor.sh;
-    #   force = true;
-    #   mutable = true;
-    # };
+    ".local/lib/hyde/custom-monitor.sh" = {
+      source = ./scripts/custom-monitor.sh;
+      force = true;
+      mutable = true;
+    };
   };
 }

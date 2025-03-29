@@ -36,7 +36,6 @@
       default = "codium"; # default text editor
     };
 
-    #TODO: Disable discord
     social = {
       discord.enable = false; # enable discord module
       webcord.enable = false; # enable webcord module
