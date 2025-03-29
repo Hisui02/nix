@@ -27,6 +27,7 @@
       "window.customTitleBarVisibility" = "never";
       "window.titleBarStyle" = "native";
       "workbench.editor.showTabs" = "none";
+      "git.confirmSync" = false
     };
   };
 }
