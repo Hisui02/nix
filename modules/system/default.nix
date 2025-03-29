@@ -4,7 +4,7 @@
   imports = [
     ./hardware.nix
     ./services.nix
-    ./networking.nix
+    ./VPNs.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -25,6 +25,7 @@
 
     # Work
     teamviewer
+    remmina
 
     # Others
     iio-hyprland # Both for automatically rotate the screen

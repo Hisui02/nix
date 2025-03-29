@@ -1,5 +1,0 @@
-{
-  networking = {
-    firewall.checkReversePath = false;
-  };
-}
