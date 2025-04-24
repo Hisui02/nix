@@ -1,0 +1,68 @@
+# VCS
+.git/
+.hg/
+.svn/
+# Dependencias / builds
+node_modules/
+vendor/
+bower_components/
+elm-stuff/
+target/
+build/
+dist/
+out/
+# Python / virtualenv
+__pycache__/
+.venv/
+env/
+venv/
+.env/
+# Archivos temporales
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+*.lock
+*.bak
+*.local
+# Archivos de compilación
+*.class
+*.o
+*.so
+*.dll
+*.exe
+*.pyc
+*.pyo
+*.jar
+# IDEs y editores
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+# Direnv
+.direnv/
+.envrc
+# ⚙️ Archivos y directorios comunes en Nix flakes/builds
+result
+result-*
+result-link
+.nix-result/
+.#*
+*.drv
+nix-shell-*
+flake.lock
+flake-inputs/
+/nix
+# Perfil y canales (por si están en directorios sincronizados o versionados por error)
+.nix-profile/
+.nix-defexpr/
+.nix-channels/
+# Caché
+.cache/
+.config/**/Cache/
+.config/**/CacheStorage/
+.config/**/GPUCache/
+.config/**/Code\ Cache/

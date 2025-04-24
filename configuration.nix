@@ -74,6 +74,9 @@ in
         imports = [
           inputs.hydenix.lib.homeModules
           ./modules/hm
+
+          # Nix-index-database - for comma and command-not-found
+          inputs.nix-index-database.hmModules.nix-index
         ];
       };
   };
@@ -85,7 +88,7 @@ in
     #! EDIT THESE VALUES
     hostname = "hydenix"; # Change to your preferred hostname
     timezone = "Europe/Madrid"; # Change to your timezone
-    locale = "es_ES.UTF-8"; # Change to your preferred locale
+    locale = "en_US.UTF-8"; # Change to your preferred locale
 
     /*
       Optionally edit the below values, or leave to use hydenix defaults
