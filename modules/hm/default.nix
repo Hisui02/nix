@@ -4,7 +4,7 @@
   imports = [
     ./hyprland
     ./waybar
-    ./chromium
+    # ./chromium
     ./shell
     ./fastfetch
     ./code

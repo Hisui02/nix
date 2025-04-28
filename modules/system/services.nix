@@ -10,6 +10,6 @@
     };
 
     teamviewer.enable = true;
-
+    flatpak.enable = true;
   };
 }

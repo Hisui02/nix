@@ -31,7 +31,7 @@
 
         diff = "kitten diff";
 
-        rdpOficina = "xfreerdp /u:alvaro /v:192.168.1.185 /dynamic-resolution /microphone:sys:pulse /sound:sys:pulse /gfx:AVC444:on";
+        rdpOficina = "xfreerdp /d:ds03 /u:alvaro /v:192.168.1.185 /dynamic-resolution /microphone:sys:pulse /sound:sys:pulse /gfx:AVC444:on";
       };
 
       initExtra = ''
