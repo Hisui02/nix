@@ -5,6 +5,11 @@
     # User's nixpkgs - for user packages
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hydenix and its nixpkgs - kept separate to avoid conflicts
     hydenix = {
       # Available inputs:
@@ -33,6 +38,7 @@
           inherit inputs;
         };
         modules = [
+          inputs.disko.nixosModules.disko
           ./configuration.nix
         ];
       };

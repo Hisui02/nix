@@ -29,6 +29,7 @@ in
     ./hardware-configuration.nix
     inputs.hydenix.lib.nixOsModules
     ./modules/system
+    ./disk-config.nix
 
     # === GPU-specific configurations ===
 
@@ -39,7 +40,7 @@ in
 
     #! EDIT THIS SECTION
     # For NVIDIA setups
-    # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonmodeset
 
     # For AMD setups
@@ -65,7 +66,7 @@ in
       inherit inputs;
     };
 
-    backupFileExtension = "hm-backup";
+    backupFileExtension = "bak";
 
     #! EDIT THIS USER (must match users defined below)
     users."hisui" =
@@ -76,7 +77,7 @@ in
           ./modules/hm
 
           # Nix-index-database - for comma and command-not-found
-          inputs.nix-index-database.hmModules.nix-index
+          inputs.nix-index-database.homeModules.nix-index
         ];
       };
   };

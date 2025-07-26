@@ -10,7 +10,7 @@
 
   programs = {
     zsh = {
-      envExtra = '''';
+      # envExtra = '''';
 
       shellAliases = {
         ff = "fastfetch";
@@ -30,12 +30,9 @@
         lt = "eza --icons=auto --tree --hyperlink";
 
         diff = "kitten diff";
-
-        rdpOficina = "xfreerdp /d:ds03 /u:alvaro /v:192.168.1.185 /dynamic-resolution /microphone:sys:pulse /sound:sys:pulse /gfx:AVC444:on";
       };
 
-      initExtra = ''
-        fastfetch
+      initContent = ''
         if [ -n "''${commands[fzf-share]}" ]; then
           source "$(fzf-share)/key-bindings.zsh"
           source "$(fzf-share)/completion.zsh"
