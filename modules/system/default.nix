@@ -1,11 +1,13 @@
-{ pkgs,... }:
+{ pkgs, ... }:
 
 {
   imports = [
+    ./boot.nix
+    ./secure-boot.nix
     ./nvidia.nix
     ./logind.nix
     #./VPNs.nix
-    ./virtualisation.nix
+    ./docker.nix
     ./flatpak.nix
   ];
 
@@ -21,10 +23,12 @@
   environment.systemPackages = with pkgs; [
     # pkgs.vscode - hydenix's vscode version
     # pkgs.userPkgs.vscode - your personal nixpkgs version
+    
     # Apps
     obsidian # Notes
     vlc # Video player
     prismlauncher # Open Source Minecraft Launcher
+    ncspot # Spotify CLI
 
     # Dev
     ollama # AI
@@ -37,5 +41,7 @@
 
     # Others
     freerdp
+
+    sbctl # For debugging and troubleshooting Secure Boot.
   ];
 }

@@ -10,6 +10,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hydenix and its nixpkgs - kept separate to avoid conflicts
     hydenix = {
       # Available inputs:
@@ -39,6 +45,7 @@
         };
         modules = [
           inputs.disko.nixosModules.disko
+          inputs.lanzaboote.nixosModules.lanzaboote
           ./configuration.nix
         ];
       };

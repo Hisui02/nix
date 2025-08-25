@@ -13,7 +13,7 @@
     "reload_style_on_change": true,
     "include": [
         "$XDG_CONFIG_HOME/waybar/modules/*json*", 
-        "$XDG_CONFIG_HOME/waybar/includes/includes.json" 
+        "$XDG_CONFIG_HOME/waybar/includes/includes.json" ,
     ],
     // positions generated based on config.ctl //
     "modules-left": [
@@ -33,7 +33,7 @@
         "orientation": "inherit",
         "modules": [
             "idle_inhibitor",
-            "clock",
+            "pers/clock",
             "hyprland/workspaces"
         ]
     },
@@ -43,7 +43,7 @@
     "group/pill#center": {
         "orientation": "inherit",
         "modules": [
-            "hyprland/window"
+            "pers/window"
         ]
     },
     "modules-right": [

@@ -41,9 +41,11 @@
     };
 
     theme = {
-      active = "Catppuccin Mocha"; # active theme name
+      active = "Nightbrew"; # active theme name
       themes = [
         "Catppuccin Mocha"
+        "Obsidian-Purple"
+        "Nightbrew"
       ]; # default enabled themes, full list in https://github.com/richen604/hydenix/tree/main/hydenix/sources/themes
     };
 

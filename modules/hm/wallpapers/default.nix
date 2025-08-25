@@ -2,10 +2,9 @@
 {
   home = {
     file = {
-      ".config/hyde/themes/Catppuccin Mocha/wallpapers" = lib.mkForce {
-        source = ./Catppuccin-Mocha;
+      ".config/hyde/themes/Catppuccin Mocha/wallpapers/cats.jpg" = lib.mkForce {
+        source = ./Catppuccin-Mocha/cats.jpg;
         force = true;
-        recursive = true;
         mutable = true;
       };
     };
