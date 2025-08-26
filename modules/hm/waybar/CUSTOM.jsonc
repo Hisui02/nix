@@ -33,7 +33,7 @@
         "orientation": "inherit",
         "modules": [
             "idle_inhibitor",
-            "pers/clock",
+            "clock",
             "hyprland/workspaces"
         ]
     },
@@ -43,7 +43,7 @@
     "group/pill#center": {
         "orientation": "inherit",
         "modules": [
-            "pers/window"
+            "hyprland/window"
         ]
     },
     "modules-right": [

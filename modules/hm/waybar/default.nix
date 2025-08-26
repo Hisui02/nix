@@ -10,16 +10,16 @@
     };
 
     file = {
-      ".local/share/waybar/modules/pers-clock.jsonc" = lib.mkForce {
-        source = ./modules/pers-clock.jsonc;
+      ".config/waybar/modules/clock.jsonc" = lib.mkForce {
+        source = ./modules/clock.jsonc;
         force = true;
         mutable = true;
       };
     };
 
     file = {
-      ".local/share/waybar/modules/pers-window.jsonc" = lib.mkForce {
-        source = ./modules/pers-window.jsonc;
+      ".config/waybar/modules/window.jsonc" = lib.mkForce {
+        source = ./modules/window.jsonc;
         force = true;
         mutable = true;
       };
