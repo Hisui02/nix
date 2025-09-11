@@ -8,5 +8,12 @@
         mutable = true;
       };
     };
+    file = {
+      ".config/hyde/themes/Nightbrew/wallpapers/creation-of-adam.jpg" = lib.mkForce {
+        source = ./Nightbrew/creation-of-adam.jpg;
+        force = true;
+        mutable = true;
+      };
+    };
   };
 }

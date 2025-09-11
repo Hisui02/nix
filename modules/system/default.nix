@@ -5,7 +5,7 @@
     ./boot.nix
     ./secure-boot.nix
     ./nvidia.nix
-    ./logind.nix
+    # ./logind.nix
     #./VPNs.nix
     ./docker.nix
     ./flatpak.nix

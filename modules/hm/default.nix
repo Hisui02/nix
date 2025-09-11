@@ -8,6 +8,7 @@
     ./fastfetch
     ./code
     ./wallpapers
+    ./mimeapps.nix
   ];
 
   # home-manager options go here
