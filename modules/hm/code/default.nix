@@ -28,7 +28,7 @@
       "editor.fontFamily" = "'CaskaydiaCove Nerd Font Mono', 'Maple Mono', 'monospace', monospace";
       "extensions.autoUpdate" = false;
       "workbench.statusBar.visible" = false;
-      "terminal.external.linuxExec" = "kitty";
+      "terminal.external.linuxExec" = "zsh";
       "terminal.explorerKind" = "both";
       "terminal.sourceControlRepositoriesKind" = "both";
       "telemetry.telemetryLevel" = "off";
@@ -42,6 +42,7 @@
       "git.enableSmartCommit" = true;
       "git.openRepositoryInParentFolders" = "always";
       "git.autofetch" = true;
+      "terminal.integrated.fontLigatures.enabled" = true;
     };
   };
 }
