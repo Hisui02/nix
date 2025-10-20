@@ -1,17 +1,20 @@
 {
   inputs,
+  lib,
   ...
 }:
 let
   # Package declaration
   # ---------------------
 
-  pkgs = import inputs.hydenix.inputs.hydenix-nixpkgs {
-    inherit (inputs.hydenix.lib) system;
-    config.allowUnfree = true;
+  system = "x86_64-linux";
+  pkgs = import inputs.nixpkgs {
+    inherit system;
     overlays = [
-      inputs.hydenix.lib.overlays
+      inputs.hydenix.overlays.default
     ];
+
+    config.allowUnfree = true;
 
     # Include your own package set to be used eg. pkgs.userPkgs.bash
     userPkgs = inputs.nixpkgs {
@@ -25,9 +28,10 @@ in
   nixpkgs.pkgs = pkgs;
 
   imports = [
-    inputs.hydenix.inputs.home-manager.nixosModules.home-manager
+    # hydenix inputs - Required modules, don't modify unless you know what you're doing
+    inputs.home-manager.nixosModules.home-manager
+    inputs.hydenix.nixosModules.default
     ./hardware-configuration.nix
-    inputs.hydenix.lib.nixOsModules
     ./modules/system
     ./disk-config.nix
 
@@ -39,25 +43,24 @@ in
     */
 
     #! EDIT THIS SECTION
-    # For NVIDIA setups
-    inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
-    # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonmodeset
 
-    # For AMD setups
-    # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-gpu-amd
+    # Run `lshw -short` or `lspci` to identify your hardware
 
-    # === CPU-specific configurations ===
-    # For AMD CPUs
-    # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-cpu-amd
-    # inputs.hydenix.inputs.nixos-hardware.nixosModules.common-cpu-amd-pstate
+    # GPU Configuration (choose one):
+    inputs.nixos-hardware.nixosModules.common-gpu-nvidia # NVIDIA
+    # inputs.nixos-hardware.nixosModules.common-gpu-amd # AMD
 
-    # For Intel CPUs
-    inputs.hydenix.inputs.nixos-hardware.nixosModules.common-cpu-intel
+    # CPU Configuration (choose one):
+    # inputs.nixos-hardware.nixosModules.common-cpu-amd # AMD CPUs
+    inputs.nixos-hardware.nixosModules.common-cpu-intel # Intel CPUs
 
-    # === Other common modules ===
-    inputs.hydenix.inputs.nixos-hardware.nixosModules.common-pc
-    inputs.hydenix.inputs.nixos-hardware.nixosModules.common-pc-ssd
+    # Additional Hardware Modules - Uncomment based on your system type:
+    # inputs.nixos-hardware.nixosModules.common-hidpi # High-DPI displays
+    # inputs.nixos-hardware.nixosModules.common-pc-laptop # Laptops
+    inputs.nixos-hardware.nixosModules.common-pc-ssd # SSD storage
   ];
+
+  # If enabling NVIDIA, you will be prompted to configure hardware.nvidia
 
   home-manager = {
     useGlobalPkgs = true;
@@ -73,11 +76,8 @@ in
       { ... }:
       {
         imports = [
-          inputs.hydenix.lib.homeModules
+          inputs.hydenix.homeModules.default
           ./modules/hm
-
-          # Nix-index-database - for comma and command-not-found
-          inputs.nix-index-database.homeModules.nix-index
         ];
       };
   };
