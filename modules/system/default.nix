@@ -43,5 +43,7 @@
     freerdp
 
     sbctl # For debugging and troubleshooting Secure Boot.
+
+    # cloudflare-warp
   ];
 }
