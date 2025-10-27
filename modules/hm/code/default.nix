@@ -43,6 +43,7 @@
       "git.openRepositoryInParentFolders" = "always";
       "git.autofetch" = true;
       "terminal.integrated.fontLigatures.enabled" = true;
+      "window.restoreWindows" = "none";
     };
   };
 }
