@@ -43,7 +43,7 @@
     };
 
     theme = {
-      active = "Nightbrew"; # active theme name
+      active = "Timeless Dream"; # active theme name
       themes = [
         "Catppuccin Mocha"
         "Obsidian-Purple"

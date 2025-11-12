@@ -6,9 +6,10 @@
     ./secure-boot.nix
     ./nvidia.nix
     # ./logind.nix
-    #./VPNs.nix
+    # ./VPNs.nix
     ./docker.nix
     ./flatpak.nix
+    ./networking.nix
   ];
 
   nix = {
@@ -40,8 +41,8 @@
     ripgrep
 
     # Others
-    freerdp
-
+    # freerdp
+    remmina
     sbctl # For debugging and troubleshooting Secure Boot.
 
     # cloudflare-warp
