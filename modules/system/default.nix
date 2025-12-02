@@ -30,7 +30,7 @@
     vlc # Video player
     prismlauncher # Open Source Minecraft Launcher
     ncspot # Spotify CLI
-
+    discordo # Discord CLI
     # Dev
     ollama # AI
     nixfmt-rfc-style # Nix Language formatter

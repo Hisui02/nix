@@ -39,7 +39,6 @@
 
     social = {
       discord.enable = false; # enable discord module
-      webcord.enable = false; # enable webcord module
     };
 
     theme = {

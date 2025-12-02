@@ -51,10 +51,16 @@
         export FZF_CTRL_R_OPTS="--no-preview"
       '';
     };
+
     fzf = {
       enable = true;
       enableZshIntegration = true;
       defaultCommand = "rg --files --hidden";
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
     };
   };
 }
