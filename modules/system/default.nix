@@ -4,7 +4,7 @@
   imports = [
     ./boot.nix
     ./secure-boot.nix
-    ./nvidia.nix
+    # ./nvidia.nix
     # ./logind.nix
     # ./VPNs.nix
     ./docker.nix
@@ -24,13 +24,14 @@
   environment.systemPackages = with pkgs; [
     # pkgs.vscode - hydenix's vscode version
     # pkgs.userPkgs.vscode - your personal nixpkgs version
-    
+
     # Apps
     obsidian # Notes
     vlc # Video player
     prismlauncher # Open Source Minecraft Launcher
     ncspot # Spotify CLI
     discordo # Discord CLI
+    # jellyfin-media-player # Jellyfin #TODO: Insecure package waiting for fix
     # Dev
     ollama # AI
     nixfmt-rfc-style # Nix Language formatter

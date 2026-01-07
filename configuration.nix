@@ -1,38 +1,36 @@
 {
   inputs,
-  lib,
+  # lib,
+  pkgs,
   ...
 }:
-let
-  # Package declaration
-  # ---------------------
+# let
+#   system = "x86_64-linux";
+#   pkgs = import inputs.nixpkgs {
+#     inherit system;
+#     overlays = [
+#       inputs.hydenix.overlays.default
+#     ];
 
-  system = "x86_64-linux";
-  pkgs = import inputs.nixpkgs {
-    inherit system;
-    overlays = [
-      inputs.hydenix.overlays.default
-    ];
+#     config.allowUnfree = true;
 
-    config.allowUnfree = true;
-
-    # Include your own package set to be used eg. pkgs.userPkgs.bash
-    userPkgs = inputs.nixpkgs {
-      config.allowUnfree = true;
-    };
-  };
-in
+#     # Include your own package set to be used eg. pkgs.userPkgs.bash
+#     userPkgs = inputs.nixpkgs {
+#       config.allowUnfree = true;
+#     };
+#   };
+# in
 {
 
   # Set pkgs for hydenix globally, any file that imports pkgs will use this
-  nixpkgs.pkgs = pkgs;
+  # nixpkgs.pkgs = pkgs;
 
   imports = [
     # hydenix inputs - Required modules, don't modify unless you know what you're doing
-    inputs.home-manager.nixosModules.home-manager
+    inputs.hydenix.inputs.home-manager.nixosModules.home-manager
     inputs.hydenix.nixosModules.default
-    ./hardware-configuration.nix
     ./modules/system
+    ./hardware-configuration.nix
     ./disk-config.nix
 
     # === GPU-specific configurations ===
@@ -61,15 +59,24 @@ in
   ];
 
   # If enabling NVIDIA, you will be prompted to configure hardware.nvidia
+  hardware.nvidia = {
+    open = true; # For newer cards, you may want open drivers
+    nvidiaSettings = true;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    prime = { # For hybrid graphics (laptops), configure PRIME:
+      # amdBusId = "PCI:0:2:0"; # Run `lspci | grep VGA` to get correct bus IDs
+      # intelBusId = "PCI:0:2:0"; # if you have intel graphics
+      # nvidiaBusId = "PCI:1:0:0";
+      offload.enable = false; # Or disable PRIME offloading if you don't care
+    };
+  };
 
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = {
-      inherit inputs;
-    };
+    extraSpecialArgs = { inherit inputs; };
 
-    backupFileExtension = "bak";
+    # backupFileExtension = "bak";
 
     #! EDIT THIS USER (must match users defined below)
     users."hisui" =
@@ -77,53 +84,32 @@ in
       {
         imports = [
           inputs.hydenix.homeModules.default
-          ./modules/hm
+          ./modules/hm # Your custom home-manager modules (configure hydenix.hm here!)
         ];
       };
+  };
+
+  # User Account Setup - REQUIRED: Change "hydenix" to your desired username (must match above)
+  users.users.hisui = {
+    isNormalUser = true;
+    initialPassword = "hydenix"; # SECURITY: Change this password after first login with `passwd`
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+    ]; # User groups (determines permissions)
+    shell = pkgs.zsh; # Default shell (options: pkgs.bash, pkgs.zsh, pkgs.fish)
   };
 
   # IMPORTANT: Customize the following values to match your preferences
   hydenix = {
     enable = true; # Enable the Hydenix module
-
-    #! EDIT THESE VALUES
+    # Basic System Settings (REQUIRED):
     hostname = "hydenix"; # Change to your preferred hostname
     timezone = "Europe/Madrid"; # Change to your timezone
     locale = "en_US.UTF-8"; # Change to your preferred locale
-
-    /*
-      Optionally edit the below values, or leave to use hydenix defaults
-      visit ./modules/hm/default.nix for more options
-
-      audio.enable = true; # enable audio module
-      boot = {
-        enable = true; # enable boot module
-        useSystemdBoot = true; # disable for GRUB
-        grubTheme = pkgs.hydenix.grub-retroboot; # or pkgs.hydenix.grub-pochita
-        grubExtraConfig = ""; # additional GRUB configuration
-        kernelPackages = pkgs.linuxPackages_zen; # default zen kernel
-      };
-      hardware.enable = true; # enable hardware module
-      network.enable = true; # enable network module
-      nix.enable = true; # enable nix module
-      sddm = {
-        enable = true; # enable sddm module
-        theme = pkgs.hydenix.sddm-candy; # or pkgs.hydenix.sddm-corners
-      };
-      system.enable = true; # enable system module
-    */
   };
 
-  #! EDIT THESE VALUES (must match users defined above)
-  users.users.hisui = {
-    isNormalUser = true; # Regular user account
-    initialPassword = "hydenix"; # Default password (CHANGE THIS after first login with passwd)
-    extraGroups = [
-      "wheel" # For sudo access
-      "networkmanager" # For network management
-      "video" # For display/graphics access
-      # Add other groups as needed
-    ];
-    shell = pkgs.zsh; # Change if you prefer a different shell
-  };
+  # System Version - Don't change unless you know what you're doing (helps with system upgrades and compatibility)
+  system.stateVersion = "25.05";
 }

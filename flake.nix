@@ -2,8 +2,12 @@
   description = "template for hydenix";
 
   inputs = {
-    # User's nixpkgs - for user packages
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs = {
+      # url = "github:nixos/nixpkgs/nixos-unstable"; # uncomment this if you know what you're doing
+      follows = "hydenix/nixpkgs"; # then comment this
+    };
+    hydenix.url = "github:richen604/hydenix";
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     disko = {
       url = "github:nix-community/disko";
@@ -15,36 +19,13 @@
       # Optional but recommended to limit the size of your system closure.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Hydenix and its nixpkgs - kept separate to avoid conflicts
-    hydenix = {
-      # Available inputs:
-      # Main: github:richen604/hydenix
-      # Dev: github:richen604/hydenix/dev
-      # Commit: github:richen604/hydenix/<commit-hash>
-      # Version: github:richen604/hydenix/v1.0.0
-      url = "github:richen604/hydenix";
-      # uncomment the below if you know what you're doing, hydenix updates nixos-unstable every week or so
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Home Manager
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Hardware Configuration's, used in ./configuration.nix. Feel free to remove if unused
-    nixos-hardware.url = "github:nixos/nixos-hardware/master";
   };
 
-  outputs =
+ outputs =
     { ... }@inputs:
     let
-      HOSTNAME = "hydenix";
-      system = "x86_64-linux";
       hydenixConfig = inputs.nixpkgs.lib.nixosSystem {
-        inherit system;
+        system = "x86_64-linux";
         specialArgs = {
           inherit inputs;
         };
@@ -54,11 +35,14 @@
           ./configuration.nix
         ];
       };
-
+      vmConfig = inputs.hydenix.lib.vmConfig {
+        inherit inputs;
+        nixosConfiguration = hydenixConfig;
+      };
     in
     {
       nixosConfigurations.hydenix = hydenixConfig;
-      # nixosConfigurations.${HOSTNAME} = hydenixConfig;
       nixosConfigurations.default = hydenixConfig;
+      packages."x86_64-linux".vm = vmConfig.config.system.build.vm;
     };
 }
