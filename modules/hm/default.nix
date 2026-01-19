@@ -2,13 +2,15 @@
 
 {
   imports = [
-    ./hyprland
-    ./waybar
-    ./hyprlock
-    ./shell
-    ./fastfetch
     ./code
-    ./wallpapers
+    ./fastfetch
+    ./hyprland
+    ./hyprlock
+    ./mpv
+    # ./ncspot
+    ./shell
+    ./swww
+    ./waybar
     ./mimeapps.nix
   ];
 

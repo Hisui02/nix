@@ -62,5 +62,10 @@
       enable = true;
       enableZshIntegration = true;
     };
+
+    lazygit = {
+      enable = true;
+      enableZshIntegration = true;
+    };
   };
 }
