@@ -11,6 +11,7 @@
   programs = {
     zsh = {
       # envExtra = '''';
+      oh-my-zsh.plugins = [ "git" ];
 
       shellAliases = {
         ff = "fastfetch";
@@ -21,8 +22,8 @@
         rb = "sudo nixos-rebuild switch --flake ~/hydenix/#hydenix";
         cl = "sudo nix-collect-garbage -d && rb";
 
-        l = "ls -lah --hyperlink=auto";
-        la = "ls -lAh --hyperlink=auto";
+        l = "ls -lAh --hyperlink=auto";
+        la = "ls -lah --hyperlink=auto";
         ld = "eza -lhD --icons=auto --hyperlink";
         ll = "ls -lh --hyperlink=auto";
         ls = "ls --color=tty --hyperlink=auto";
