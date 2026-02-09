@@ -25,7 +25,7 @@
     prismlauncher # Open Source Minecraft Launcher
 
     # Dev
-    ollama # AI
+    # ollama # AI
     nixfmt-rfc-style # Nix Language formatter
 
     # Shell

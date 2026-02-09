@@ -8,6 +8,7 @@
     ./hyprlock
     ./mpv
     # ./ncspot
+    ./ollama
     ./shell
     ./swww
     ./waybar
@@ -54,14 +55,14 @@
       ]; # default enabled themes, full list in https://github.com/richen604/hydenix/tree/main/hydenix/sources/themes
     };
 
-    terminals = {
-      kitty.configText = ''
-        map kitty_mod+enter launch --cwd=current --type=window
-        map cmd+enter       launch --cwd=current --type=window
-        map kitty_mod+t     launch --cwd=current --type=tab
-        map cmd+t           launch --cwd=current --type=tab
-      ''; # kitty config text
-    };
+    # terminals = {
+    #   kitty.configText = ''
+    #     map kitty_mod+enter launch --cwd=current --type=window
+    #     map cmd+enter       launch --cwd=current --type=window
+    #     map kitty_mod+t     launch --cwd=current --type=tab
+    #     map cmd+t           launch --cwd=current --type=tab
+    #   '';
+    # };
 
     /*
       ! Below are defaults
