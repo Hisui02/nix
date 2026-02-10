@@ -18,6 +18,8 @@
     };
   };
 
+programs.niri.enable = true;
+
   environment.systemPackages = with pkgs; [
     # Apps
     obsidian # Notes
@@ -25,13 +27,17 @@
     prismlauncher # Open Source Minecraft Launcher
 
     # Dev
-    # ollama # AI
     nixfmt-rfc-style # Nix Language formatter
+    lazygit
+    yazi
 
     # Shell
     bat
     btop
     ripgrep
+
+#    niri
+    xwayland-satellite
 
     # Others
     remmina
