@@ -1,7 +1,7 @@
 {
   imports = [
     ./audio.nix
-    ./getty.nix
+    ./displayManager.nix
   ];
 
   # Enable the X11 windowing system.
