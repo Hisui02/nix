@@ -2,7 +2,6 @@
 {
   imports = [
     ./services
-    ./disk-config.nix
     ./boot.nix
     ./environment.nix
     ./networking.nix
