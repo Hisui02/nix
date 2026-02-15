@@ -6,16 +6,20 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { home-manager, ... }@inputs:
     let
       systemSettings = {
+        system = "x86_64-linux";
         hostname = "laptop-hisui";
         username = "hisui";
         timezone = "Europe/Madrid";
         locale = "en_US.UTF-8";
-        system = "x86_64-linux";
       };
 
       systemConfig = inputs.nixpkgs.lib.nixosSystem {
@@ -30,9 +34,13 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            home-manager.users.${systemSettings.username} = import ./home.nix {
-              inherit systemSettings;
+            home-manager.extraSpecialArgs = {
+              inherit inputs systemSettings;
+            };
+            home-manager.users.${systemSettings.username} = {
+              imports = [
+                ./home.nix
+              ];
             };
           }
         ];
