@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+		./hardware
     ./services
     ./boot.nix
     ./environment.nix
