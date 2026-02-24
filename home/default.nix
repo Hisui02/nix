@@ -6,5 +6,6 @@
     ./polkit.nix
     ./swaylock.nix
     ./git.nix
+		./rofi.nix
   ];
 }
