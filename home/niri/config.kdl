@@ -293,7 +293,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
-    Mod+B hotkey-overlay-title="Open Browser: Zen" { spawn "app.zen_browser.zen"; }
+    Mod+B hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
     Mod+A hotkey-overlay-title="Open App selector: Rofi" { spawn "rofi" "-show" "drun"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 

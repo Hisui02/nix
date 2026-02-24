@@ -6,13 +6,16 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
-    { home-manager, ... }@inputs:
+    { home-manager, nixvim, ... }@inputs:
     let
       systemSettings = {
         system = "x86_64-linux";
@@ -39,6 +42,7 @@
             };
             home-manager.users.${systemSettings.username} = {
               imports = [
+                nixvim.homeModules.nixvim
                 ./home.nix
               ];
             };
