@@ -3,6 +3,7 @@
     ./niri
     ./terminal
     ./mako.nix
+		./ncspot.nix
     ./polkit.nix
     ./swaylock.nix
     ./git.nix
