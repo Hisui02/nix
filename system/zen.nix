@@ -30,7 +30,9 @@ let
     "signon.management.page.breach-alerts.enabled" = false; # No alerts when passwords breached
     "signon.rememberSignons" = false; # No offer to save passwords
     "zen.welcome-screen.seen" = true;
-  };
+		"browser.search.separatePrivateDefault" = false; # Use the same Search engine in private browsing
+		"zen.view.window.scheme" = 0; # Dark mode
+	};
 
   extensions = [
     # To add additional extensions, find it on addons.mozilla.org, find
