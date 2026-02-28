@@ -5,6 +5,7 @@
     ./services
     ./boot.nix
     ./environment.nix
+		./garbage-collector.nix
     ./networking.nix
     ./virtualisation.nix
     ./window-manager.nix
