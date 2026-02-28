@@ -18,16 +18,13 @@
   users.users.${systemSettings.username} = {
     isNormalUser = true;
     initialPassword = systemSettings.username;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "video" ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true; # Skip verification, shell already configured in home/shell
     packages = with pkgs; [ ];
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   system.stateVersion = "26.05";
 }
