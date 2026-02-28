@@ -6,6 +6,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+		nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixvim = {
       url = "github:nix-community/nixvim";
     };
@@ -15,7 +16,7 @@
     };
   };
   outputs =
-    { home-manager, nixvim, ... }@inputs:
+    { home-manager, nixvim, nixos-hardware, ... }@inputs:
     let
       systemSettings = {
         system = "x86_64-linux";
@@ -33,6 +34,7 @@
         modules = [
           home-manager.nixosModules.home-manager
           inputs.disko.nixosModules.disko
+					nixos-hardware.nixosModules.lenovo-thinkpad-t490
           ./system.nix
           {
             home-manager.useGlobalPkgs = true;
