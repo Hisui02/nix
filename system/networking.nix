@@ -3,10 +3,10 @@
   networking = {
     hostName = systemSettings.hostname;
     networkmanager.enable = true;
-    # firewall = {
-      # allowedTCPPorts = [ ... ];
-      # allowedUDPPorts = [ ... ];
-      # firewall.enable = false;
-    # };
+    firewall = { 
+			allowedTCPPorts = []; 
+			allowedUDPPorts = []; 
+		};
+		#firewall.enable = false;
   };
 }
