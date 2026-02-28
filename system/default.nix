@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  systemSettings,
-  ...
-}:
+{ pkgs, inputs, systemSettings, lib, ... }:
 {
   imports = [
 		./hardware
@@ -19,4 +14,8 @@
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${systemSettings.system}.default
   ];
+
+	nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+		"cloudflare-warp"
+	];
 }

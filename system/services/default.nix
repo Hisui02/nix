@@ -1,6 +1,7 @@
 {
   imports = [
     ./audio.nix
+		./cloudflare-warp.nix
     ./displayManager.nix
 		./ssh.nix
   ];
