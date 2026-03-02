@@ -309,6 +309,7 @@ binds {
 		
 		XF86MonBrightnessUp allow-when-locked=true { spawn "light" "-A" "5"; } // Brightness +5%
 		XF86MonBrightnessDown allow-when-locked=true { spawn "light" "-U" "5"; } // Brightness -5%
+		XF86Display { power-off-monitors; } // Powers off the monitors. To turn them back on, do any input like moving the mouse or pressing any other key.
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
     Mod+O repeat=false { toggle-overview; }
@@ -530,7 +531,4 @@ binds {
 
     Ctrl+Alt+Delete { quit; }
 
-    // Powers off the monitors. To turn them back on, do any input like
-    // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
 }
