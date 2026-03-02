@@ -310,6 +310,7 @@ binds {
 		XF86MonBrightnessUp allow-when-locked=true { spawn "light" "-A" "5"; } // Brightness +5%
 		XF86MonBrightnessDown allow-when-locked=true { spawn "light" "-U" "5"; } // Brightness -5%
 		XF86Display { power-off-monitors; } // Powers off the monitors. To turn them back on, do any input like moving the mouse or pressing any other key.
+		XF86Tools { spawn "kitty" "sh" "-c" "cd ~/nix && nvim"; } // Opens Neovim in the flake config folder
     // You can also move the mouse into the top-left hot corner,
     // or do a four-finger swipe up on a touchpad.
     Mod+O repeat=false { toggle-overview; }
