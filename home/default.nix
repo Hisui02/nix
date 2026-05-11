@@ -9,6 +9,7 @@
     ./swaylock.nix
     ./git.nix
 		./gtk.nix
+		./jq.nix
     ./nixvim
 		./rofi.nix
   ];
