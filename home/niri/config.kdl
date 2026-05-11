@@ -34,23 +34,10 @@ input {
     }
 }
 
-/-output "DP-1" {
+output "HDMI-A-1" {
     mode "3440x1440@100"
     scale 1.25
     transform "normal"
-    position x=224 y=0
-}
-
-/-output "HDMI-A-1" {
-    mode "1920x1080@144"
-    scale 1.25
-    position x=0 y=1152
-}
-
-/-output "HDMI-A-2" {
-    mode "1920x1080@144"
-    scale 1.25
-    position x=1536 y=1152
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -210,7 +197,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-//spawn-at-startup "waybar"
+spawn-at-startup "noctalia-shell"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -294,23 +281,19 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
     Mod+B hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
-    Mod+A hotkey-overlay-title="Open App selector: Rofi" { spawn "rofi" "-show" "drun"; }
-    Mod+Alt+L hotkey-overlay-title="Lock the Screen: Swaylock" { spawn "swaylock"; }
+    Mod+A hotkey-overlay-title="Open App selector: Noctalia" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Ctrl+Alt+Delete hotkey-overlay-title="Toggle Session Menu" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-    //XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    //XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-    //XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-    //XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "increase";}
+    XF86AudioLowerVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "decrease";}
+    XF86AudioMute        allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "muteOutput";}
+    XF86AudioMicMute     allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "muteInput";}
 		
-		XF86MonBrightnessUp allow-when-locked=true { spawn "light" "-A" "5"; } // Brightness +5%
-		XF86MonBrightnessDown allow-when-locked=true { spawn "light" "-U" "5"; } // Brightness -5%
+		XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+		XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 		
 		XF86Display { power-off-monitors; } // Powers off the monitors. To turn them back on, do any input like moving the mouse or pressing any other key.
+		Alt+XF86Display { spawn "kitty" "sh" "-c" "~/.local/bin/laptop-monitor-switch.sh"; } // Toggles laptop builtin display
 		XF86Tools { spawn "kitty" "sh" "-c" "cd ~/nix && nvim"; } // Opens Neovim in the flake config folder
 		//XF86Keyboard allow-when-locked=true { spawn "light" "-U" "5"; }
 		//XF86Favorites allow-when-locked=true { spawn "light" "-U" "5"; }
@@ -535,6 +518,6 @@ binds {
     // which ensures niri always processes them, even when an inhibitor is active.
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
-    Ctrl+Alt+Delete { quit; }
+    // Ctrl+Alt+Delete { quit; }
 
 }
