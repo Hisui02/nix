@@ -143,6 +143,51 @@
         "type": "github"
       }
     },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "noctalia-qs": [
+          "noctalia-qs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773252517,
+        "narHash": "sha256-t4K/LBLj2UTVpUhdNbpdzexP/sJeCJB1R6nii8QDt28=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "dbb2e156838e740629e60b1d9f7969aff5868fde",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "type": "github"
+      }
+    },
+    "noctalia-qs": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems_2",
+        "treefmt-nix": "treefmt-nix"
+      },
+      "locked": {
+        "lastModified": 1773232010,
+        "narHash": "sha256-Oim7Clb/+dowp34SuJIc50Ic+Kq1HugPsS6dgw8BVoM=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-qs",
+        "rev": "8910d7f52d222e5c78d7bfac25d7b377fdbb7407",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-qs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "disko": "disko",
@@ -150,6 +195,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",
+        "noctalia": "noctalia",
+        "noctalia-qs": "noctalia-qs",
         "zen-browser": "zen-browser"
       }
     },

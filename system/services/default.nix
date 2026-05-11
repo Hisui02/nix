@@ -3,6 +3,7 @@
     ./audio.nix
 		./cloudflare-warp.nix
     ./displayManager.nix
+		./power.nix
 		./ssh.nix
   ];
 

@@ -5,6 +5,7 @@
     ./mako.nix
 		./ncspot.nix
 		./mpv.nix
+		./noctalia
     ./polkit.nix
     ./swaylock.nix
     ./git.nix
