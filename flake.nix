@@ -23,6 +23,7 @@
       url = "github:noctalia-dev/noctalia-qs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+		psysonic.url = "github:Psychotoxical/psysonic";
   };
   outputs =
     { home-manager, nixvim, nixos-hardware, ... }@inputs:

@@ -13,7 +13,7 @@
     ./hlchunk.nix
     ./yanky.nix
     ./autopairs.nix
-    ./blink-cmp.nix
+		#./blink-cmp.nix
     #./tmux-navigator.nix
     ./smear-cursor.nix
     #./lsp/conform.nix
