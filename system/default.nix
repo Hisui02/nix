@@ -15,6 +15,7 @@
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${systemSettings.system}.default
 		inputs.noctalia.packages.${systemSettings.system}.default
+		inputs.psysonic.packages.${systemSettings.system}.psysonic
   ];
 
 	nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
