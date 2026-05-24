@@ -5,7 +5,7 @@ input {
     keyboard {
         xkb {
             layout "us"
-            options "altgr-intl"
+            variant "altgr-intl"
         }
         numlock // Enable numlock on startup, omitting this setting disables it.
     }
