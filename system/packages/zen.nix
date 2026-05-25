@@ -72,6 +72,12 @@ in
               Alias = "@no";
             }
             {
+              Name = "Home Manager Options";
+              URLTemplate = "https://home-manager-options.extranix.com/?query={searchTerms}&release=master";
+              IconURL = "https://wiki.nixos.org/favicon.ico";
+              Alias = "@nhm";
+            }
+            {
               Name = "NixOS Wiki";
               URLTemplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
               IconURL = "https://wiki.nixos.org/favicon.ico";
