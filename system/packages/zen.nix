@@ -32,6 +32,7 @@ let
     "zen.welcome-screen.seen" = true;
 		"browser.search.separatePrivateDefault" = false; # Use the same Search engine in private browsing
 		"zen.view.window.scheme" = 0; # Dark mode
+		"toolkit.legacyUserProfileCustomizations.stylesheets" = true; # Enabling Noctalia Color Scheme
 	};
 
   extensions = [

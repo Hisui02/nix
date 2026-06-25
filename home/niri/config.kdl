@@ -197,7 +197,7 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "noctalia-shell"
+spawn-at-startup "noctalia"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -246,6 +246,14 @@ window-rule {
     default-column-width {}
 }
 
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
@@ -270,7 +278,7 @@ window-rule {
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 20
     clip-to-geometry true
 }
 
@@ -281,16 +289,25 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
     Mod+B hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
-    Mod+A hotkey-overlay-title="Open App selector: Noctalia" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Ctrl+Alt+Delete hotkey-overlay-title="Toggle Session Menu" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "increase";}
-    XF86AudioLowerVolume allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "decrease";}
-    XF86AudioMute        allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "muteOutput";}
-    XF86AudioMicMute     allow-when-locked=true { spawn  "noctalia-shell" "ipc" "call" "volume" "muteInput";}
+		// Core Noctalia binds
+    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
+	  //Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
+
+    Ctrl+Alt+Delete hotkey-overlay-title="Toggle Session Menu" { spawn "noctalia" "ipc" "call" "sessionMenu" "toggle"; }
+
+    // Audio
+    XF86AudioRaiseVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute  allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+
+		// Brightness
+    XF86MonBrightnessUp  allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown allow-when-locked=true  { spawn-sh "noctalia msg brightness-down"; }
+
+    XF86AudioMicMute     allow-when-locked=true { spawn  "noctalia" "ipc" "call" "volume" "muteInput";}
 		
-		XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-		XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 		
 		XF86Display { power-off-monitors; } // Powers off the monitors. To turn them back on, do any input like moving the mouse or pressing any other key.
 		Alt+XF86Display { spawn "kitty" "sh" "-c" "~/.local/bin/laptop-monitor-switch.sh"; } // Toggles laptop builtin display
@@ -520,4 +537,14 @@ binds {
 
     // Ctrl+Alt+Delete { quit; }
 
+}
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
 }
