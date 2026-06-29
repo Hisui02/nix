@@ -3,7 +3,7 @@ end = [ "tray", "notifications", "clipboard", "battery", "session" ]
 margin_edge = 5
 margin_ends = 0
 position = "right"
-start = [ "network", "bluetooth", "media", "workspaces" ]
+start = [ "network", "bluetooth", "workspaces" ]
 
 [battery]
 warning_threshold = 20
@@ -74,6 +74,7 @@ path = "/home/hisui/Pictures/Wallpapers/wallhaven_o5zo2l.jpg"
 
 [widget.media]
 hide_when_no_media = true
+scale = 1.5
 
 [widget.network]
 show_label = false
