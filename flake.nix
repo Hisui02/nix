@@ -1,48 +1,64 @@
 {
-  description = "template for hydenix";
-
   inputs = {
-    nixpkgs = {
-      # url = "github:nixos/nixpkgs/nixos-unstable"; # uncomment this if you know what you're doing
-      follows = "hydenix/nixpkgs"; # then comment this
-    };
-    hydenix.url = "github:richen604/hydenix";
-    nixos-hardware.url = "github:nixos/nixos-hardware/master";
-
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      # Optional but recommended to limit the size of your system closure.
+		nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+    };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+		noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+		psysonic.url = "github:Psychotoxical/psysonic";
   };
-
- outputs =
-    { ... }@inputs:
+  outputs =
+    { home-manager, nixvim, nixos-hardware, ... }@inputs:
     let
-      hydenixConfig = inputs.nixpkgs.lib.nixosSystem {
+      systemSettings = {
         system = "x86_64-linux";
+        hostname = "laptop-hisui";
+        username = "hisui";
+        timezone = "Europe/Madrid";
+        locale = "en_US.UTF-8";
+      };
+
+      systemConfig = inputs.nixpkgs.lib.nixosSystem {
+        system = systemSettings.system;
         specialArgs = {
-          inherit inputs;
+          inherit inputs systemSettings;
         };
         modules = [
+          home-manager.nixosModules.home-manager
           inputs.disko.nixosModules.disko
-          inputs.lanzaboote.nixosModules.lanzaboote
-          ./configuration.nix
+					nixos-hardware.nixosModules.lenovo-thinkpad-t490
+          ./system.nix
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs systemSettings;
+            };
+            home-manager.users.${systemSettings.username} = {
+              imports = [
+                nixvim.homeModules.nixvim
+                ./home.nix
+              ];
+            };
+          }
         ];
-      };
-      vmConfig = inputs.hydenix.lib.vmConfig {
-        inherit inputs;
-        nixosConfiguration = hydenixConfig;
       };
     in
     {
-      nixosConfigurations.hydenix = hydenixConfig;
-      nixosConfigurations.default = hydenixConfig;
-      packages."x86_64-linux".vm = vmConfig.config.system.build.vm;
+      nixosConfigurations.${systemSettings.hostname} = systemConfig;
+      nixosConfigurations.default = systemConfig;
     };
 }

@@ -9,7 +9,7 @@
           partitions = {
             ESP = {
               type = "EF00";
-              size = "4G";
+              size = "2G";
               content = {
                 type = "filesystem";
                 format = "vfat";
@@ -18,7 +18,7 @@
               };
             };
             plainSwap = {
-              size = "64G";
+              size = "24G";
               content = {
                 type = "swap";
                 discardPolicy = "both";
@@ -26,7 +26,7 @@
               };
             };
             root = {
-              size = "400G";
+              size = "100%";
               content = {
                 type = "filesystem";
                 format = "ext4";
