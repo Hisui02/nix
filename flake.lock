@@ -139,22 +139,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
-      "locked": {
-        "lastModified": 1779560665,
-        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixvim": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -195,24 +179,6 @@
         "type": "github"
       }
     },
-    "psysonic": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_5"
-      },
-      "locked": {
-        "lastModified": 1782406360,
-        "narHash": "sha256-Jll3q17+iKU0tirfKmQi8ktbb0UjSjJWMamDy03gOqk=",
-        "owner": "Psychotoxical",
-        "repo": "psysonic",
-        "rev": "cea814e9937c0ccf8be5fdb48197183dc55c4faa",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Psychotoxical",
-        "repo": "psysonic",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "disko": "disko",
@@ -221,7 +187,6 @@
         "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",
         "noctalia": "noctalia",
-        "psysonic": "psysonic",
         "zen-browser": "zen-browser"
       }
     },
