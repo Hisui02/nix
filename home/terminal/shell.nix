@@ -66,7 +66,4 @@
 		];
 	};
 	home.file."${config.xdg.configHome}/zsh/.p10k.zsh".source = ./p10k.zsh;
-	programs.fastfetch = {
-		enable = true;
-	};
 }
