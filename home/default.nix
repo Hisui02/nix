@@ -9,5 +9,6 @@
 		./gtk.nix
 		./jq.nix
     ./nixvim
+		./xdg.nix
   ];
 }
