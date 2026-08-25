@@ -68,16 +68,16 @@
       fd
       # Formatters
       stylua # Lua formatter
-      csharpier # C# formatter
+			# csharpier # C# formatter
       nixfmt # Nix formatter
       # Linters
       # golangci-lint # Go linter
       # shellcheck # Shell script linter
       # eslint_d # JavaScript/TypeScript linter
       # Debuggers
-      netcoredbg # C# debugger
-      #asm-lsp # Assembly LSP
-      #delve # Go debugger
+			# netcoredbg # C# debugger
+      # asm-lsp # Assembly LSP
+      # delve # Go debugger
       gcc
     ];
   };
