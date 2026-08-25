@@ -284,6 +284,7 @@ binds {
 
     Mod+T hotkey-overlay-title="Open a Terminal: Kitty" { spawn "kitty"; }
     Mod+B hotkey-overlay-title="Open Browser: Zen" { spawn "zen"; }
+	  Mod+E hotkey-overlay-title="Open File Manager: Yazi" { spawn "kitty" "yazi"; }
 
 		// Core Noctalia binds
     Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
