@@ -1,6 +1,7 @@
 { pkgs, inputs, systemSettings, lib, ... }:
 {
   imports = [
+		./gaming
 		./hardware
 		./packages
     ./services
@@ -15,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${systemSettings.system}.default
 		inputs.noctalia.packages.${systemSettings.system}.default
+		xwayland-satellite
   ];
 
 	nix.settings = {
@@ -30,5 +32,8 @@
 
 	nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
 		"cloudflare-warp"
+  	"steam"
+    "steam-unwrapped"
+    "proton-ge-bin"
 	];
 }
