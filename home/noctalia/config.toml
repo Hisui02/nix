@@ -69,6 +69,10 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@eDP-1" ]
 [plugins]
 enabled = [ "noctalia/wallhaven" ]
 
+[shell.panel]
+session_placement = "floating"
+session_position = "center"
+
 [shell.screenshot]
 save_to_file = false
 

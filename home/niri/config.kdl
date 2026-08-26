@@ -298,7 +298,7 @@ binds {
     Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
 	  //Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
 
-    Ctrl+Alt+Delete hotkey-overlay-title="Toggle Session Menu" { spawn "noctalia" "ipc" "call" "sessionMenu" "toggle"; }
+    Ctrl+Alt+Delete hotkey-overlay-title="Toggle Session Menu" { spawn "noctalia" "msg" "panel-open" "session"; }
 
     // Audio
     XF86AudioRaiseVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-up"; }
