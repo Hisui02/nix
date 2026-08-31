@@ -18,6 +18,15 @@ refresh_minutes = 120
 
 [desktop_widgets]
 enabled = false
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
 
 [location]
 auto_locate = true
@@ -127,7 +136,7 @@ wallpaper_scheme = "m3-tonal-spot"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "kitty", "niri", "qt" ]
-    community_ids = [ "zen-browser" ]
+    community_ids = [ "zen-browser", "neovim", "steam", "bat", "lazygit", "yazi" ]
 
 [wallpaper.default]
 path = "/home/hisui/Pictures/Wallpapers/wallhaven_o5zo2l.jpg"

@@ -1,3 +1,8 @@
 {
-  programs.kitty.enable = true;
+  programs.kitty = {
+		enable = true;
+		extraConfig = ''
+			include themes/noctalia.conf
+		'';
+	};
 }
