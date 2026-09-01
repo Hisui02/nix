@@ -14,7 +14,7 @@
       auto_scroll = true;
       close_on_exit = true;
       insert_mappings = true;
-      shell = "nu";
+      shell = "zsh";
     };
   };
   keymaps = [
