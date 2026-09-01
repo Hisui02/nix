@@ -17,6 +17,7 @@
     inputs.zen-browser.packages.${systemSettings.system}.default
 		inputs.noctalia.packages.${systemSettings.system}.default
 		xwayland-satellite
+		feishin
   ];
 
 	nix.settings = {
