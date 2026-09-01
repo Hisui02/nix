@@ -16,8 +16,8 @@
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages.${systemSettings.system}.default
 		inputs.noctalia.packages.${systemSettings.system}.default
-		xwayland-satellite
-		feishin
+		xwayland-satellite #TODO: Move to display manager configuration
+		feishin #TODO: Move to proper home manager folder when available
   ];
 
 	nix.settings = {
@@ -33,7 +33,8 @@
 
 	nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
 		"cloudflare-warp"
-  	"steam"
+		#TODO: Move to gaming configuration
+		"steam"
     "steam-unwrapped"
     "proton-ge-bin"
 	];
