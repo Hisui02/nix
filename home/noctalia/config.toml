@@ -143,7 +143,7 @@ wallpaper_scheme = "m3-tonal-spot"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "kitty", "niri", "qt" ]
-    community_ids = [ "zen-browser", "neovim", "steam", "bat", "lazygit", "yazi" ]
+    community_ids = [ "feishin", "zen-browser", "neovim", "steam", "fastfetch", "bat", "lazygit", "yazi" ]
 
 [wallpaper.default]
 path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
