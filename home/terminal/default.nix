@@ -1,6 +1,7 @@
 {
   imports = [
 		./bat.nix
+		./eza.nix
 		./fastfetch.nix
 		./lazygit.nix
     ./shell.nix
