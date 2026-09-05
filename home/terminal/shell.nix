@@ -61,9 +61,11 @@
 			# Regular initialization content
 			''
 				source "$ZDOTDIR/.p10k.zsh"
-				fastfetch --logo-type kitty
 			''
 		];
+		envExtra = ''
+			fastfetch --logo-type kitty
+		'';
 	};
 	home.file."${config.xdg.configHome}/zsh/.p10k.zsh".source = ./p10k.zsh;
 }
