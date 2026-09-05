@@ -1,6 +1,6 @@
 input {
     warp-mouse-to-focus mode="center-xy-always" // Makes the mouse warp to newly focused windows.
-    focus-follows-mouse // Focuses windows and outputs automatically when moving the mouse over them.
+    focus-follows-mouse max-scroll-amount="0%" // Focuses windows and outputs automatically when moving the mouse over them. Allow focus-follows-mouse only when it will not scroll the view.
 
     keyboard {
         xkb {
