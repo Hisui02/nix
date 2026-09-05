@@ -36,16 +36,46 @@ type = "notification"
 type = "power_profile"
 
 [desktop_widgets]
-enabled = false
+enabled = true
 schema_version = 2
-widget_order = []
+widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000005" ]
 
     [desktop_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
 
-    [desktop_widgets.widget]
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 192.0
+    box_width = 1248.0
+    cx = 752.0
+    cy = 432.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = false
+        bands = 128
+        centered = true
+        color_1 = "primary"
+        color_2 = "primary"
+        mirrored = true
+        show_when_idle = false
+
+    [desktop_widgets.widget.desktop-widget-0000000000000005]
+    box_height = 192.0
+    box_width = 384.0
+    cx = 768.0
+    cy = 720.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "media_player"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000005.settings]
+        background = false
+        hide_when_no_media = true
+        layout = "horizontal"
 
 [location]
 auto_locate = true
