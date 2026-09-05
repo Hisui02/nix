@@ -66,6 +66,12 @@ layout {
     }
 }
 
+gestures {
+	hot-corners {
+		off
+	}
+}
+
 spawn-at-startup "noctalia"
 
 hotkey-overlay {
