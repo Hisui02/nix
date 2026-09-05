@@ -1,5 +1,5 @@
 [bar.default]
-end = [ "tray", "notifications", "clipboard", "battery" ]
+end = [ "tray", "notifications", "battery" ]
 margin_edge = 0
 margin_ends = 0
 position = "right"
