@@ -1,8 +1,9 @@
 [bar.default]
-end = [ "tray", "notifications", "clipboard", "battery", "session" ]
-margin_edge = 5
+end = [ "tray", "notifications", "clipboard", "battery" ]
+margin_edge = 0
 margin_ends = 0
 position = "right"
+radius = 0
 start = [ "network", "bluetooth", "workspaces" ]
 
 [battery]
@@ -78,59 +79,65 @@ widget_order = [ "lockscreen-login-box@HDMI-A-2", "lockscreen-login-box@eDP-1" ]
 [plugins]
 enabled = [ "noctalia/wallhaven" ]
 
-[shell.panel]
-session_placement = "floating"
-session_position = "center"
+[shell]
+avatar_path = "/home/hisui/.avatar.jpg"
 
-[shell.screenshot]
-save_to_file = false
+    [shell.panel]
+    session_placement = "floating"
+    session_position = "center"
 
-[[shell.session.actions]]
-action = "lock"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "1"
-variant = "default"
+    [shell.screenshot]
+    save_to_file = false
 
-[[shell.session.actions]]
-action = "logout"
-countdown_seconds = 0.0
-enabled = false
-shortcut = "2"
-variant = "default"
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
 
-[[shell.session.actions]]
-action = "lock_and_suspend"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "2"
-variant = "default"
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = false
+    shortcut = "2"
+    variant = "default"
 
-[[shell.session.actions]]
-action = "command"
-command = "systemctl hibernate"
-countdown_seconds = 0.0
-enabled = true
-glyph = "bed-filled"
-label = "Hibernate"
-shortcut = "3"
-variant = "default"
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
 
-[[shell.session.actions]]
-action = "reboot"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "4"
-variant = "default"
+    [[shell.session.actions]]
+    action = "command"
+    command = "systemctl hibernate"
+    countdown_seconds = 0.0
+    enabled = true
+    glyph = "bed-filled"
+    label = "Hibernate"
+    shortcut = "3"
+    variant = "default"
 
-[[shell.session.actions]]
-action = "shutdown"
-countdown_seconds = 0.0
-enabled = true
-shortcut = "5"
-variant = "destructive"
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
 
 [theme]
+builtin = "Noctalia"
+community_palette = "Oxocarbon"
+mode = "dark"
 source = "wallpaper"
 wallpaper_scheme = "m3-tonal-spot"
 
@@ -142,7 +149,7 @@ wallpaper_scheme = "m3-tonal-spot"
 path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
 
 [wallpaper.last]
-path = "/home/hisui/Pictures/Wallpapers/wallhaven_o5zo2l.jpg"
+path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
 
 [wallpaper.monitors.eDP-1]
 path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
