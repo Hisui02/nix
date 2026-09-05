@@ -17,6 +17,24 @@ refresh_minutes = 120
     name = "Calendar"
     type = "google"
 
+[[control_center.shortcuts]]
+type = "wifi"
+
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[[control_center.shortcuts]]
+type = "notification"
+
+[[control_center.shortcuts]]
+type = "dark_mode"
+
+[[control_center.shortcuts]]
+type = "wallpaper"
+
 [desktop_widgets]
 enabled = false
 schema_version = 2
@@ -145,20 +163,23 @@ wallpaper_scheme = "m3-tonal-spot"
     builtin_ids = [ "gtk3", "gtk4", "kitty", "niri", "qt" ]
     community_ids = [ "feishin", "zen-browser", "neovim", "steam", "fastfetch", "bat", "lazygit", "yazi" ]
 
-[wallpaper.default]
-path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
+[wallpaper]
+transition_on_startup = true
 
-[wallpaper.last]
-path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
+    [wallpaper.default]
+    path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
 
-[wallpaper.monitors.eDP-1]
-path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
+    [wallpaper.last]
+    path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
 
-[[wallpaper.favorite]]
-palette_source = "wallpaper"
-path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
-theme_mode = "dark"
-wallpaper_scheme = "m3-tonal-spot"
+    [wallpaper.monitors.eDP-1]
+    path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-tonal-spot"
 
 [widget.media]
 hide_when_no_media = true
@@ -169,6 +190,12 @@ show_label = false
 
 [widget.tray]
 drawer = true
+
+[widget.wallhaven]
+type = "noctalia/wallhaven:wallhaven"
+
+[widget.wallhaven_2]
+type = "noctalia/wallhaven:wallhaven"
 
 [widget.workspaces]
 display = "none"
