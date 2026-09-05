@@ -15,7 +15,6 @@
   	};
 		dotDir = "${config.xdg.configHome}/zsh";
 		shellAliases = {
-			c = "clear";
 			fastfetch = "fastfetch --logo-type kitty";
 			".." = "cd ..";
 			"..." = "cd ../..";
