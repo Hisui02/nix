@@ -4,8 +4,8 @@
     ./keymaps.nix
     ./treesitter.nix
     ./toggleterm.nix
-    ./themes.nix
-    ./lazygit.nix
+    ./noctalia.nix
+		./lazygit.nix
     ./bufferline.nix
     ./snacks.nix
     ./gitsigns.nix
