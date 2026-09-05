@@ -139,13 +139,19 @@ wallpaper_scheme = "m3-tonal-spot"
     community_ids = [ "zen-browser", "neovim", "steam", "bat", "lazygit", "yazi" ]
 
 [wallpaper.default]
-path = "/home/hisui/Pictures/Wallpapers/wallhaven_o5zo2l.jpg"
+path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
 
 [wallpaper.last]
 path = "/home/hisui/Pictures/Wallpapers/wallhaven_o5zo2l.jpg"
 
 [wallpaper.monitors.eDP-1]
-path = "/home/hisui/Pictures/Wallpapers/wallhaven_o5zo2l.jpg"
+path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
+
+[[wallpaper.favorite]]
+palette_source = "wallpaper"
+path = "/home/hisui/Pictures/Wallpapers/wallpaper.jpg"
+theme_mode = "dark"
+wallpaper_scheme = "m3-tonal-spot"
 
 [widget.media]
 hide_when_no_media = true
