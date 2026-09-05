@@ -78,6 +78,12 @@ in
               IconURL = "https://wiki.nixos.org/favicon.ico";
               Alias = "@nw";
             }
+						{
+              Name = "Youtube";
+              URLTemplate = "https://www.youtube.com/results?search_query={searchTerms}";
+              IconURL = "https://www.youtube.com/favicon.ico";
+              Alias = "@yt";
+            }
           ];
         };
       };
