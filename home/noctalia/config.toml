@@ -1,5 +1,5 @@
 [bar.default]
-end = [ "tray", "notifications", "wallhaven_2", "battery" ]
+end = [ "tray", "notifications", "cpu", "ram", "wallhaven_2", "battery" ]
 margin_edge = 0
 margin_ends = 0
 position = "right"
@@ -181,11 +181,17 @@ transition_on_startup = true
     theme_mode = "dark"
     wallpaper_scheme = "m3-tonal-spot"
 
+[widget.cpu]
+show_label = false
+
 [widget.media]
 hide_when_no_media = true
 scale = 1.5
 
 [widget.network]
+show_label = false
+
+[widget.ram]
 show_label = false
 
 [widget.tray]
