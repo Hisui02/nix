@@ -1,5 +1,5 @@
 [bar.default]
-end = [ "tray", "notifications", "battery" ]
+end = [ "tray", "notifications", "wallhaven_2", "battery" ]
 margin_edge = 0
 margin_ends = 0
 position = "right"
