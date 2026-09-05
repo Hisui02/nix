@@ -27,13 +27,13 @@ type = "bluetooth"
 type = "caffeine"
 
 [[control_center.shortcuts]]
+type = "nightlight"
+
+[[control_center.shortcuts]]
 type = "notification"
 
 [[control_center.shortcuts]]
-type = "dark_mode"
-
-[[control_center.shortcuts]]
-type = "wallpaper"
+type = "power_profile"
 
 [desktop_widgets]
 enabled = false
