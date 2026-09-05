@@ -23,6 +23,7 @@
 			".5" = "cd ../../../../..";
 			mkdir = "mkdir -p";
 			cat = "bat";
+			cd =  "z";
 		};
 		# Using the new initContent API with proper ordering
 		initContent = lib.mkMerge [

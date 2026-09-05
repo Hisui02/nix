@@ -7,5 +7,6 @@
     ./shell.nix
     ./terminal.nix
 		./yazi.nix
+		./zoxide.nix
   ];
 }
