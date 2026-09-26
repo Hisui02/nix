@@ -17,7 +17,6 @@
     inputs.zen-browser.packages.${systemSettings.system}.default
 		inputs.noctalia.packages.${systemSettings.system}.default
 		xwayland-satellite #TODO: Move to display manager configuration
-		feishin #TODO: Move to proper home manager folder when available
   ];
 
 	nix.settings = {
